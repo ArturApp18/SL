@@ -1,11 +1,9 @@
-using UnityEditor.Animations;
-
-namespace Game.Scripts.Hero
+namespace Game.Scripts.Logic
 {
-    public interface IAnimationStateReader
-    {
-        void EnteredState(int stateHash);
-        void ExitedState(int stateHash);
-        AnimatorState State { get; }
-    }
+	public interface IAnimationStateReader
+	{
+		void EnteredState(int stateHash);
+		void ExitedState(int stateHash);
+		AnimatorState State { get; }
+	}
 }

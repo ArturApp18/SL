@@ -6,12 +6,16 @@ namespace Game.Scripts.Services.Input
     {
         protected const string Horizontal = "Horizontal";
         protected const string Vertical = "Vertical";
-        private const string Button = "Fire";
+        private const string Attack = "Fire";
+        private const string Jump = "Jump";
 
         public abstract Vector2 Axis { get; }
 
         public bool IsAttackButtonUp() =>
-            SimpleInput.GetButton(Button);
+            SimpleInput.GetButton(Attack);
+
+        public bool IsJumpButtonUp() =>
+            SimpleInput.GetButton(Jump);
 
         protected static Vector2 SimpleInputAxis() => 
             new Vector2(SimpleInput.GetAxis(Horizontal), SimpleInput.GetAxis(Vertical));

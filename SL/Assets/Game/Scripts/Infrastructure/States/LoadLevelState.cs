@@ -1,8 +1,10 @@
 using System;
 using Game.Scripts.CameraLogic;
+using Game.Scripts.Hero;
 using Game.Scripts.Infrastructure.Factories;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
 using Game.Scripts.Logic;
+using Game.Scripts.UI;
 using UnityEngine;
 
 namespace Game.Scripts.Infrastructure.States
@@ -39,11 +41,11 @@ namespace Game.Scripts.Infrastructure.States
 		private void OnLoaded()
 		{
 			InitGameWold();
-			InformProgresReaders();
+			InformProgressReaders();
 			_stateMachine.Enter<GameLoopState>();
 		}
 
-		private void InformProgresReaders()
+		private void InformProgressReaders()
 		{
 			foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
 				progressReader.LoadProgress(_progressService.Progress);
@@ -53,9 +55,16 @@ namespace Game.Scripts.Infrastructure.States
 		{
 			GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(InitialPointTag));
 
-			_gameFactory.CreateHud();
+			InitHud(hero);
 
 			CameraFollow(hero);
+		}
+
+		private void InitHud(GameObject hero)
+		{
+			GameObject hud = _gameFactory.CreateHud();
+
+			hud.GetComponentInChildren<ActorUI>().Construct(hero.GetComponent<HeroHealth>());
 		}
 
 		private void CameraFollow(GameObject hero)

@@ -29,7 +29,10 @@ namespace Game.Scripts.Infrastructure.States
 			_sceneLoader.Load(Initial, EnterLoadLevel);
 		}
 
-		public void Exit() { }
+		public void Exit()
+		{
+			
+		}
 
 		private void EnterLoadLevel() =>
 			_stateMachine.Enter<LoadProgressState>();

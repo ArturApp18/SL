@@ -8,5 +8,6 @@ namespace Game.Scripts.Services.Input
         Vector2 Axis { get; }
 
         bool IsAttackButtonUp();
+        bool IsJumpButtonUp();
     }
 }
