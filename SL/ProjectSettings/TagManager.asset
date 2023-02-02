@@ -6,6 +6,8 @@ TagManager:
   tags:
   - InitialPoint
   - FxTemporaire
+  - SaveTrigger
+  - LevelTransfer
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - Aggro
   - AttackZone
   - Hittable
-  - 
+  - Pickup
   - 
   - 
   - 

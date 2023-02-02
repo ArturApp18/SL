@@ -2,7 +2,8 @@ using System;
 
 namespace Game.Scripts.Data
 {
-	[Serializable] public class PositionOnLevel
+	[Serializable] 
+	public class PositionOnLevel
 	{
 		public string Level;
 		public Vector3Data Position;

@@ -1,31 +1,37 @@
-using System;
 using Game.Scripts.CameraLogic;
 using Game.Scripts.Hero;
 using Game.Scripts.Infrastructure.Factories;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
+using Game.Scripts.Infrastructure.Services.StaticData;
 using Game.Scripts.Logic;
-using Game.Scripts.UI;
+using Game.Scripts.StaticData;
+using Game.Scripts.UI.Elements;
+using Game.Scripts.UI.Services.Factory;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game.Scripts.Infrastructure.States
 {
 	public class LoadLevelState : IPayloadedState<string>
 	{
-		private const string InitialPointTag = "InitialPoint";
-		
 		private readonly GameStateMachine _stateMachine;
 		private readonly SceneLoader _sceneLoader;
 		private readonly LoadingCurtain _loadingCurtain;
 		private readonly IGameFactory _gameFactory;
 		private readonly IPersistentProgressService _progressService;
+		private readonly IStaticDataService _staticData;
+		private readonly IUIFactory _uiFactory;
 
-		public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory, IPersistentProgressService progressService)
+		public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain, IGameFactory gameFactory,
+			IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
 		{
 			_stateMachine = stateMachine;
 			_sceneLoader = sceneLoader;
 			_loadingCurtain = loadingCurtain;
 			_gameFactory = gameFactory;
 			_progressService = progressService;
+			_staticData = staticData;
+			_uiFactory = uiFactory;
 		}
 
 		public void Enter(string sceneName)
@@ -40,10 +46,14 @@ namespace Game.Scripts.Infrastructure.States
 
 		private void OnLoaded()
 		{
-			InitGameWold();
+			InitUIRoot();
+			InitGameWorld();
 			InformProgressReaders();
 			_stateMachine.Enter<GameLoopState>();
 		}
+
+		private void InitUIRoot() =>
+			_uiFactory.CreateUIRoot();
 
 		private void InformProgressReaders()
 		{
@@ -51,13 +61,39 @@ namespace Game.Scripts.Infrastructure.States
 				progressReader.LoadProgress(_progressService.Progress);
 		}
 
-		private void InitGameWold()
+		private void InitGameWorld()
 		{
-			GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(InitialPointTag));
+			LevelStaticData levelData = LevelStaticData();
+
+			InitSpawners(levelData);
+			InitSaveTriggers(levelData);
+			InitLevelTransfer(levelData);
+			GameObject hero = InitHero(levelData);
 
 			InitHud(hero);
 
 			CameraFollow(hero);
+		}
+
+		private GameObject InitHero(LevelStaticData levelData) =>
+			_gameFactory.CreateHero(levelData.InitialHeroPosition);
+
+		private void InitSpawners(LevelStaticData levelData)
+		{
+			foreach (EnemySpawnerData spawnerData in levelData.EnemySpawners)
+			{
+				_gameFactory.CreateSpawner(spawnerData.Position, spawnerData.Id, spawnerData.MonsterTypeId);
+			}
+		}
+
+		private void InitSaveTriggers(LevelStaticData levelData)
+		{
+			_gameFactory.CreateSaveTriggers(levelData.SaveTriggers);
+		}
+
+		private void InitLevelTransfer(LevelStaticData levelData)
+		{
+			_gameFactory.CreateLevelTransfer(levelData.LevelTransfers);
 		}
 
 		private void InitHud(GameObject hero)
@@ -66,6 +102,9 @@ namespace Game.Scripts.Infrastructure.States
 
 			hud.GetComponentInChildren<ActorUI>().Construct(hero.GetComponent<HeroHealth>());
 		}
+
+		private LevelStaticData LevelStaticData() =>
+			_staticData.ForLevel(SceneManager.GetActiveScene().name);
 
 		private void CameraFollow(GameObject hero)
 		{

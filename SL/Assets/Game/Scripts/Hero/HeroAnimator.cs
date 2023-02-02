@@ -33,7 +33,6 @@ namespace Game.Scripts.Hero
 				return State == AnimatorState.Attack;
 			}
 		}
-		public bool isattack;
 
 		private void Update()
 		{
@@ -46,8 +45,6 @@ namespace Game.Scripts.Hero
 			{
 				_animator.SetBool(IsRun, false);
 			}
-
-			isattack = IsAttacking;
 		}
 
 		public void PlayHit()

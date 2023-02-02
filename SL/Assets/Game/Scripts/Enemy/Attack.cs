@@ -1,8 +1,4 @@
-using System;
 using System.Linq;
-using Game.Scripts.Hero;
-using Game.Scripts.Infrastructure.Factories;
-using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Logic;
 using UnityEngine;
 
@@ -17,35 +13,34 @@ namespace Game.Scripts.Enemy
 		public float Cleavage = 0.5f;
 		public float EffectiveDistance = 0.5f;
 		public float Damage = 10f;
+		public Transform AttackPoint;
 
-		private IGameFactory _factory;
 		private Transform _heroTransform;
 		private float _attackCooldown;
 		private bool _isAttacking;
 		private int _layerMask;
-		private Collider2D[] _hits = new Collider2D[1];
 		private bool _attackIsActive;
+		private Collider2D[] _hits = new Collider2D[1];
+
+		public void Construct(Transform heroTransform) =>
+			_heroTransform = heroTransform;
 
 		private void Awake()
 		{
-			_factory = AllServices.Container.Single<IGameFactory>();
-
 			_layerMask = 1 << LayerMask.NameToLayer("Player");
-
-			_factory.HeroCreated += OnHeroCreated;
 		}
 
 		private void Update()
 		{
 			UpdateCooldown();
 
-			if(CanAttack())
+			if (CanAttack())
 				StartAttack();
 		}
 
 		private void OnAttack()
 		{
-			if(Hit(out Collider2D hit))
+			if (Hit(out Collider2D hit))
 			{
 				PhysicsDebug.DrawDebub(StartPoint(), Cleavage, 1);
 				hit.transform.GetComponent<IHealth>().TakeDamage(Damage);
@@ -73,14 +68,9 @@ namespace Game.Scripts.Enemy
 			return hitsCount > 0;
 		}
 
-		private Vector3 StartPoint()
-		{
-			return new Vector2(transform.position.x, transform.position.y) + ChooseAttackSide() * EffectiveDistance;
-		}
-
 		private Vector2 ChooseAttackSide()
 		{
-			if(_heroTransform.position.x < transform.position.x)
+			if (_heroTransform.position.x < transform.position.x)
 				return Vector2.left;
 			else
 				return Vector2.right;
@@ -88,7 +78,7 @@ namespace Game.Scripts.Enemy
 
 		private void UpdateCooldown()
 		{
-			if(!CooldownIsUp())
+			if (!CooldownIsUp())
 				_attackCooldown -= Time.deltaTime;
 		}
 
@@ -99,14 +89,16 @@ namespace Game.Scripts.Enemy
 			_isAttacking = true;
 		}
 
-		private bool CooldownIsUp() =>
-			_attackCooldown <= 0;
+		private Vector2 StartPoint()
+		{
+			return new Vector2(transform.position.x, transform.position.y) + ChooseAttackSide() * EffectiveDistance;
+		}
 
 		private bool CanAttack() =>
 			_attackIsActive && !_isAttacking && CooldownIsUp();
 
-		private void OnHeroCreated() =>
-			_heroTransform = _factory.HeroGameObject.transform;
+		private bool CooldownIsUp() =>
+			_attackCooldown <= 0;
 
 	}
 }

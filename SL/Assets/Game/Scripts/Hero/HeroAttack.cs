@@ -1,4 +1,3 @@
-using System;
 using Game.Scripts.Data;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
@@ -20,6 +19,7 @@ namespace Game.Scripts.Hero
 		private Stats _stats;
 		
 
+		
 		private void Awake()
 		{
 			_input = AllServices.Container.Single<IInputService>();

@@ -13,33 +13,9 @@ namespace Game.Scripts.Enemy
 		private IGameFactory _gameFactory;
 		private Vector3 _positionToLook;
 
-		private void Start()
-		{
-			_gameFactory = AllServices.Container.Single<IGameFactory>();
-
-			if(HeroExists())
-			{
-				InitializeHeroTransform();
-			}
-			else
-			{
-				_gameFactory.HeroCreated += InitializeHeroTransform;
-			}
-		}
-
-		private bool HeroExists() =>
-			_gameFactory.HeroGameObject != null;
-
-		private void InitializeHeroTransform() =>
-			_heroTransform = _gameFactory.HeroGameObject.transform;
-
-		private void Update()
-		{
-			if(Initialized())
-			{
-				RotateTowardsHero();
-			}
-		}
+		public void Construct(Transform heroTransform) =>
+			_heroTransform = heroTransform;
+		
 
 		private void RotateTowardsHero()
 		{
@@ -62,9 +38,6 @@ namespace Game.Scripts.Enemy
 
 		private float SpeedFactor() =>
 			Speed * Time.deltaTime;
-
-		private bool Initialized() =>
-			_heroTransform != null;
 
 	}
 

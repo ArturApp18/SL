@@ -2,7 +2,8 @@ using System;
 
 namespace Game.Scripts.Data
 {
-	[Serializable] public class Vector3Data
+	[Serializable] 
+	public class Vector3Data
 	{
 		public float X;
 		public float Y;

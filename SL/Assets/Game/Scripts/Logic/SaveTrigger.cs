@@ -10,6 +10,11 @@ namespace Game.Scripts.Logic
 		private ISaveLoadService _saveLoadService;
 
 		public BoxCollider2D Collider2D;
+
+		public void Construct(ISaveLoadService saveLoadService)
+		{
+			_saveLoadService = saveLoadService;
+		}
 		private void Awake()
 		{
 			_saveLoadService = AllServices.Container.Single<ISaveLoadService>();

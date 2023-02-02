@@ -1,5 +1,4 @@
 using Game.Scripts.Infrastructure.Factories;
-using Game.Scripts.Infrastructure.Services;
 using UnityEngine;
 
 namespace Game.Scripts.Enemy
@@ -15,49 +14,45 @@ namespace Game.Scripts.Enemy
 		public Rigidbody2D Rigidbody;
 		
 		[SerializeField] private float _movementSpeed;
-
-		private void Start()
+		public float MovementSpeed
 		{
-			_gameFactory = AllServices.Container.Single<IGameFactory>();
-
-			if(_gameFactory.HeroGameObject != null)
-				InitializeHeroTransform();
-			else
-				_gameFactory.HeroCreated += HeroCreated;
+			get => _movementSpeed;
+			set => _movementSpeed = value;
 		}
+
+		public void Construct(Transform heroTransform) =>
+			_heroTransform = heroTransform;
 
 		private void Update()
 		{
 			if (Initialized() && HeroNotReached())
-			{
-				Vector3 localScale = transform.localScale;
-				
-				if(transform.position.x < _heroTransform.position.x)
-				{
-					Rigidbody.velocity = new Vector2(_movementSpeed, Rigidbody.velocity.y);
+				Move();
+		}
 
-					transform.localScale = new Vector2(-1, 1);
-				}
-				else
-				{
-					Rigidbody.velocity = new Vector2(-_movementSpeed, Rigidbody.velocity.y);
-					transform.localScale = new Vector2(1, 1);
-				}
+		private void Move()
+		{
+			if (ChooseSide())
+			{
+				Rigidbody.velocity = new Vector2(MovementSpeed, Rigidbody.velocity.y);
+
+				transform.localScale = new Vector2(-1, 1);
+			}
+			else
+			{
+				Rigidbody.velocity = new Vector2(-MovementSpeed, Rigidbody.velocity.y);
+				transform.localScale = new Vector2(1, 1);
 			}
 		}
 
-		private bool Initialized()
-		{
-			return _heroTransform != null;
-		}
+		private bool ChooseSide() =>
+			transform.position.x < _heroTransform.position.x;
 
-		private void InitializeHeroTransform() =>
-			_heroTransform = _gameFactory.HeroGameObject.transform;
+		private bool Initialized() =>
+			_heroTransform != null;
 
-		private void HeroCreated() =>
-			InitializeHeroTransform();
 
 		private bool HeroNotReached() =>
 			Vector3.Distance(transform.position, _heroTransform.position) >= MinimalDistance;
+
 	}
 }

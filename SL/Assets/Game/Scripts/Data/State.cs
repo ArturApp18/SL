@@ -2,7 +2,8 @@ using System;
 
 namespace Game.Scripts.Data
 {
-	[Serializable] public class State
+	[Serializable]
+	public class State
 	{
 		public float CurrentHP;
 		public float MaxHP;
