@@ -9,6 +9,7 @@ namespace Game.Scripts.Logic
 	{
 		private ISaveLoadService _saveLoadService;
 
+		public bool Saved;
 		public BoxCollider2D Collider2D;
 
 		public void Construct(ISaveLoadService saveLoadService)

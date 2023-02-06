@@ -45,7 +45,7 @@ namespace Game.Scripts.Enemy
 		}
 
 		private bool ChooseSide() =>
-			transform.position.x < _heroTransform.position.x;
+			transform.position.x <= _heroTransform.position.x;
 
 		private bool Initialized() =>
 			_heroTransform != null;

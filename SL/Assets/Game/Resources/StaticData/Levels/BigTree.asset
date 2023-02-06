@@ -15,5 +15,5 @@ MonoBehaviour:
   LevelKey: BigTree
   EnemySpawners: []
   InitialHeroPosition: {x: -3.67, y: -2.19}
-  SaveTriggers: {x: 0, y: 0}
-  LevelTransfers: {x: 0, y: 0}
+  SaveTriggers: {x: -8.67, y: -3.234}
+  LevelTransfers: {x: -4.31, y: -3.89}

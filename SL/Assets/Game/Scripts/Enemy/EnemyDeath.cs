@@ -8,6 +8,8 @@ namespace Game.Scripts.Enemy
 	public class EnemyDeath : MonoBehaviour
 	{
 		public EnemyHealth Health;
+		public Follow Follow;
+		public Aggro Aggro;
 		public EnemyAnimator Animator;
 
 		public GameObject DeathFx;
@@ -33,11 +35,16 @@ namespace Game.Scripts.Enemy
 		private void Die()
 		{
 			Health.HealthChanged -= HealthChanged;
+			if (Follow != null)
+			{
+				Follow.enabled = false;
+			}
+			Aggro.enabled = false;
 			Animator.PlayDeath();
 
 			SpawnDeathFx();
 			StartCoroutine(DestroyTimer());
-			
+
 			Happened?.Invoke();
 		}
 

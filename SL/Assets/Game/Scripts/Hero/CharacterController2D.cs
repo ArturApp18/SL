@@ -5,7 +5,6 @@ namespace Game.Scripts.Hero
 {
     public class CharacterController2D : MonoBehaviour
     {
-        [SerializeField] private float m_JumpForce = 400f; // Amount of force added when the player jumps.
 
         [Range(0, 1)] [SerializeField]
         private float m_CrouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
@@ -65,7 +64,7 @@ namespace Game.Scripts.Hero
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public void Move(float move, bool crouch)
         {
             // If crouching, check to see if the character can stand up
             if (!crouch)
@@ -129,13 +128,7 @@ namespace Game.Scripts.Hero
                 }
             }
 
-            // If the player should jump...
-            if (m_Grounded && jump)
-            {
-                // Add a vertical force to the player.
-                m_Grounded = false;
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            }
+
         }
 
 

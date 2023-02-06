@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Game.Scripts.Data;
 using Game.Scripts.Enemy;
 using Game.Scripts.Infrastructure.Factories;
@@ -34,9 +35,9 @@ namespace Game.Scripts.Logic.EnemySpawners
 			}
 		}
 
-		private void Spawn()
+		private async void Spawn()
 		{
-			GameObject monster = _factory.CreateMonster(MonsterTypeId, transform);
+			GameObject monster = await _factory.CreateMonster(MonsterTypeId, transform);
 			_enemyDeath = monster.GetComponent<EnemyDeath>();
 			_enemyDeath.Happened += Slay;
 		}

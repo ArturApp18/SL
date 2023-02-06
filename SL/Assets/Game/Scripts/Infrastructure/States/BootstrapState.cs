@@ -44,19 +44,45 @@ namespace Game.Scripts.Infrastructure.States
 		private void RegisterServices()
 		{
 			RegisterStaticData();
+			RegisterAdsService();
 			_services.RegisterSingle<IRandomService>(new RandomService());
 			_services.RegisterSingle<IGameStateMachine>(_stateMachine);
 			_services.RegisterSingle<IInputService>(InputService());
-			_services.RegisterSingle<IAssets>(new AssetProvider());
+			RegisterAssetProvider();
 			_services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-			_services.RegisterSingle<IUIFactory>(new UIFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(), _services.Single<IPersistentProgressService>()));
-
+			
+			_services.RegisterSingle<IUIFactory>(new UIFactory(
+				_services.Single<IAssets>(), 
+				_services.Single<IStaticDataService>(), 
+				_services.Single<IPersistentProgressService>()));
+			
 			_services.RegisterSingle<IWindowsService>(new WindowsService(_services.Single<IUIFactory>()));
-			_services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>(), _services.Single<IStaticDataService>(),
-				_services.Single<IPersistentProgressService>(), _services.Single<IRandomService>(),
-			_services.Single<IWindowsService>(), _stateMachine));
+			
+			_services.RegisterSingle<IGameFactory>(new GameFactory(
+				_services.Single<IAssets>(),
+				_services.Single<IStaticDataService>(),
+				_services.Single<IPersistentProgressService>(), 
+				_services.Single<IRandomService>(),
+			_services.Single<IWindowsService>(),
+				_stateMachine));
+			
 			_services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));
 		}
+
+		private void RegisterAssetProvider()
+		{
+			AssetProvider assetProvider = new AssetProvider();
+			assetProvider.Instantiate();
+			_services.RegisterSingle<IAssets>(assetProvider);
+		}
+
+		private void RegisterAdsService()
+		{
+			//var adsService = new AdsService();
+			//adsService.Initialize();
+			//_services.RegisterSingle<IAdsService>(adsService);
+		}
+
 
 		private void RegisterStaticData()
 		{
@@ -71,5 +97,10 @@ namespace Game.Scripts.Infrastructure.States
 				? new StandaloneInputService()
 				: new MobileInputService();
 		}
+	}
+
+	public class AdsService
+	{
+		
 	}
 }

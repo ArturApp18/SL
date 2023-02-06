@@ -14,8 +14,14 @@ namespace Game.Scripts.Services.Input
         public bool IsAttackButtonUp() =>
             SimpleInput.GetButton(Attack);
 
-        public bool IsJumpButtonUp() =>
+        public bool IsJumpButton() =>
             SimpleInput.GetButton(Jump);
+
+        public bool IsJumpButtonDown() =>
+            SimpleInput.GetButtonDown(Jump);
+
+        public bool IsJumpButtonUp() =>
+            SimpleInput.GetButtonUp(Jump);
 
         protected static Vector2 SimpleInputAxis() => 
             new Vector2(SimpleInput.GetAxis(Horizontal), SimpleInput.GetAxis(Vertical));

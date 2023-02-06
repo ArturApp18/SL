@@ -29,6 +29,7 @@ namespace Game.Scripts.Enemy
 				StopAggroCoroutine();
 				
 				SwitchFollowOn();
+				Debug.Log(obj.transform.position);
 			}
 		}
 

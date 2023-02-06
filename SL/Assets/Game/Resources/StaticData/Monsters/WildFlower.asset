@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterTypeId: 10
   Hp: 5
-  Damage: 1
-  MaxLoot: 2
-  MinLoot: 5
+  Damage: 6.1
   MoveSpeed: 1
   EffectiveDistance: 0.5
   Cleavage: 0.5
-  Prefab: {fileID: 6451676549032221556, guid: fb125a8ba9f3ffe4795fe021f04be8ee, type: 3}
+  MaxLoot: 2
+  MinLoot: 5
+  PrefabReference:
+    m_AssetGUID: fb125a8ba9f3ffe4795fe021f04be8ee
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

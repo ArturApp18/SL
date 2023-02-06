@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Search;
 
 namespace Game.Scripts.UI.Windows
 {

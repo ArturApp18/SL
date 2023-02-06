@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Data;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
@@ -11,6 +12,8 @@ namespace Game.Scripts.Hero
 	{
 		[SerializeField] private Rigidbody2D _rigidbody;
 		[SerializeField] private CharacterController2D _characterController;
+		[SerializeField] private HeroRotation _heroRotation;
+		[SerializeField] private PhysicsMovement _movement;
 
 		private IInputService _inputService;
 
@@ -18,8 +21,8 @@ namespace Game.Scripts.Hero
 
 		private bool _jump;
 		private bool _crouch = false;
-
-		public float _horizontalMove;
+		private float _horizontalMove;
+		private float _verticalMove;
 
 		private void Awake()
 		{
@@ -29,12 +32,13 @@ namespace Game.Scripts.Hero
 		private void Update()
 		{
 			_horizontalMove = _inputService.Axis.x * MovementSpeed;
+			_verticalMove = _inputService.Axis.y;
+			
 		}
 
 		private void FixedUpdate()
 		{
-			_characterController.Move(_horizontalMove * Time.deltaTime, _crouch, _jump);
-			_jump = false;
+			_characterController.Move(_horizontalMove * Time.deltaTime, false);
 		}
 
 		public void UpdateProgress(PlayerProgress progress) =>
@@ -45,10 +49,10 @@ namespace Game.Scripts.Hero
 
 		public void LoadProgress(PlayerProgress progress)
 		{
-			if(CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
+			if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
 			{
 				Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
-				if(savedPosition != null)
+				if (savedPosition != null)
 					Warp(to: savedPosition);
 			}
 		}

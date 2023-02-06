@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Game.Scripts.Enemy;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
@@ -11,14 +12,15 @@ namespace Game.Scripts.Infrastructure.Factories
 	{
 		List<ISavedProgressReader> ProgressReaders { get; }
 		List<ISavedProgress> ProgressWriters { get; }
-		GameObject CreateHero(Vector3 at);
-		GameObject CreateHud();
+		Task<GameObject> CreateHero(Vector3 at);
+		Task<GameObject> CreateHud();
 		void Cleanup();
-		GameObject CreateMonster(MonsterTypeId typeId, Transform parent);
-		LootPiece CreateLoot();
-		void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
+		Task<GameObject> CreateMonster(MonsterTypeId typeId, Transform parent);
+		Task<LootPiece> CreateLoot();
+		Task CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
 
-		void CreateSaveTriggers(Vector2 at);
-		void CreateLevelTransfer(Vector2 at);
+		Task CreateSaveTriggers(Vector2 at);
+		Task CreateLevelTransfer(Vector2 at);
+		Task WarmUp();
 	}
 }

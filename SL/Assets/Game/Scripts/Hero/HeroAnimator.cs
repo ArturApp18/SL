@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Game.Scripts.Infrastructure;
 using Game.Scripts.Logic;
 using UnityEngine;
 
@@ -7,19 +9,25 @@ namespace Game.Scripts.Hero
 	public class HeroAnimator : MonoBehaviour, IAnimationStateReader
 	{
 		[SerializeField] private Rigidbody2D _rigidbody;
-		[SerializeField] public Animator _animator;
+		[SerializeField] private Animator _animator;
 
 		private static readonly int MoveHash = Animator.StringToHash("Walking");
+		private static readonly int JumpHash = Animator.StringToHash("Jumping");
 		private static readonly int AttackHash = Animator.StringToHash("Attack");
 		private static readonly int HitHash = Animator.StringToHash("Hit");
 		private static readonly int DieHash = Animator.StringToHash("Die");
+		private static readonly int IsJump = Animator.StringToHash("IsJumping");
 		private static readonly int IsRun = Animator.StringToHash("isRun");
+		private static readonly int Landing = Animator.StringToHash("Landing");
+		private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
 
 		private readonly int _idleStateHash = Animator.StringToHash("Idle");
 		private readonly int _idleStateFullHash = Animator.StringToHash("Base Layer.Idle");
-		private readonly int _attackStateHash = Animator.StringToHash("PlayerAttack");
+		private readonly int _attackStateHash = Animator.StringToHash("Attack");
 		private readonly int _walkingStateHash = Animator.StringToHash("Run");
-		private readonly int _deathStateHash = Animator.StringToHash("PlayerDeath");
+		private readonly int _deathStateHash = Animator.StringToHash("Death");
+		private readonly int _jumpStateHash = Animator.StringToHash("Jump");
+
 
 		public event Action<AnimatorState> StateEntered;
 		public event Action<AnimatorState> StateExited;
@@ -34,9 +42,19 @@ namespace Game.Scripts.Hero
 			}
 		}
 
+		public bool IsJumping
+		{
+			get
+			{
+				return State == AnimatorState.Jumping;
+			}
+		}
+
 		private void Update()
 		{
-			_animator.SetFloat(MoveHash, _rigidbody.velocity.magnitude, 0.1f, Time.deltaTime);
+			_animator.SetFloat(MoveHash, Math.Abs(_rigidbody.velocity.x), 0.1f, Time.deltaTime);
+
+
 			if (_animator.GetFloat(MoveHash) > 0.5)
 			{
 				_animator.SetBool(IsRun, true);
@@ -47,9 +65,30 @@ namespace Game.Scripts.Hero
 			}
 		}
 
+
 		public void PlayHit()
 		{
 			_animator.SetTrigger(HitHash);
+		}
+
+		public void PlayJump()
+		{
+			_animator.SetBool(IsJump, true);
+		}
+
+		public void StopPlayJump()
+		{
+			_animator.SetBool(IsJump, false);
+		}
+
+		public void StartLanding()
+		{
+			_animator.SetBool(Landing, true);
+		}
+
+		public void StopLanding()
+		{
+			_animator.SetBool(Landing, false);
 		}
 
 		public void PlayAttack()
@@ -61,6 +100,7 @@ namespace Game.Scripts.Hero
 		{
 			_animator.SetTrigger(DieHash);
 		}
+
 
 		public void EnteredState(int stateHash)
 		{
@@ -92,6 +132,10 @@ namespace Game.Scripts.Hero
 			{
 				state = AnimatorState.Died;
 			}
+			else if (stateHash == _jumpStateHash)
+			{
+				state = AnimatorState.Jumping;
+			}
 			else
 			{
 				state = AnimatorState.Unknown;
@@ -99,5 +143,6 @@ namespace Game.Scripts.Hero
 
 			return state;
 		}
+
 	}
 }

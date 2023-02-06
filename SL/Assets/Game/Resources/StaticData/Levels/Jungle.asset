@@ -14,18 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: Main
   EnemySpawners:
-  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
+  - Id: Main_89d4ee86-7eb3-4608-910b-c284c5739b8b
     MonsterTypeId: 0
-    Position: {x: -1.9800003, y: -3.12, z: 0.008027896}
-  - Id: Main_cfab1e1c-d09d-4aa3-b04c-069dfd1cb413
+    Position: {x: 0.1699996, y: -4.1, z: 0.016055793}
+  - Id: Main_d30eccec-05c0-43e2-a8fc-71e1e1682f2a
+    MonsterTypeId: 10
+    Position: {x: 2.9299998, y: 1.52, z: 0.016055793}
+  - Id: Main_f4aac1d0-53d4-41c2-9c91-065a2f01ecb6
     MonsterTypeId: 0
-    Position: {x: -3.6000001, y: -3.15, z: 0.008027896}
-  - Id: Main_cb8796a2-02bc-4329-bb1d-08abbbe4e0f0
+    Position: {x: 3.6599994, y: -0.29999995, z: 0.016055793}
+  - Id: Main_a259a27b-0c15-49e5-ba0c-0d08731ef0ae
     MonsterTypeId: 0
-    Position: {x: -0.8000002, y: -4, z: 0.008027896}
-  - Id: Main_48ed72d0-a742-486a-b39b-7ef1054f43b5
+    Position: {x: -2.6200001, y: 0.8200002, z: 0.016055793}
+  - Id: Main_d3b9201f-7453-4bf7-8860-ee83d41e9e8d
     MonsterTypeId: 0
-    Position: {x: -5.07, y: -4, z: 0.008027896}
-  InitialHeroPosition: {x: -7.66, y: -1.67}
-  SaveTriggers: {x: -8.67, y: -3.234}
-  LevelTransfers: {x: -4.31, y: -3.89}
+    Position: {x: 2.48, y: -1.8499999, z: 0.016055793}
+  InitialHeroPosition: {x: -7.24, y: -2.85}
+  SaveTriggers: {x: -2.9, y: -2.92}
+  LevelTransfers: {x: -8.23, y: 2.64}

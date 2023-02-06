@@ -6,6 +6,8 @@ namespace Game.Scripts.Logic
 		Idle,
 		Attack,
 		Walking,
+		Jumping,
+		Falling,
 		Died,
 	}
 }
