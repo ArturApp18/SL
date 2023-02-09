@@ -27,8 +27,8 @@ TagManager:
   - Hittable
   - Pickup
   - Enemy
-  - 
-  - 
+  - Platforms
+  - ExplosinosPlatform
   - 
   - 
   - 
