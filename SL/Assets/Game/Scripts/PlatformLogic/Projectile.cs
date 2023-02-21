@@ -18,6 +18,10 @@ namespace Game.Scripts.PlatformLogic
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                Destroy(gameObject, 5);
+            }
         }
     }
 }

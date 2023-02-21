@@ -29,7 +29,7 @@ namespace Game.Scripts.Hero
 
 		private void Update()
 		{
-			if (_input.IsAttackButtonUp() && !HeroAnimator.IsAttacking)
+			if (_input.IsAttackButton() && !HeroAnimator.IsAttacking)
 				HeroAnimator.PlayAttack();
 		}
 

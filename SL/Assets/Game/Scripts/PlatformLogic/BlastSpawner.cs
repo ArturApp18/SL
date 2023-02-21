@@ -6,11 +6,11 @@ namespace Game.Scripts.PlatformLogic
 {
 	public class BlastSpawner : MonoBehaviour
 	{
-		private Coroutine _blastCoroutine;
 		[SerializeField] private GameObject _projectilePrefab;
 		[SerializeField] private float _cooldowm;
 		[SerializeField] private bool isActivated;
 
+		private Coroutine _blastCoroutine;
 
 		private void Update()
 		{

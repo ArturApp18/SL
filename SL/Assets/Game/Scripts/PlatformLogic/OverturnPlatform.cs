@@ -1,3 +1,4 @@
+using Game.Scripts.Enemy;
 using UnityEngine;
 
 namespace Game.Scripts.PlatformLogic
@@ -7,13 +8,15 @@ namespace Game.Scripts.PlatformLogic
 		[SerializeField] private AnimationCurve _zAnimation;
 		[SerializeField] private float _duration;
 		[SerializeField] private float _speed;
+		
 		private float _expiredTime;
-
-		private void Update()
+		
+		private void FixedUpdate()
 		{
 			float progressZ = CalculateAxisAnimation(_duration);
 
-			transform.rotation = Quaternion.Euler(0, 0, _zAnimation.Evaluate(progressZ) * _speed);
+			transform.localRotation = Quaternion.Euler(0, 0, _zAnimation.Evaluate(progressZ) * _speed);
+
 		}
 
 		private float CalculateAxisAnimation(float duration)

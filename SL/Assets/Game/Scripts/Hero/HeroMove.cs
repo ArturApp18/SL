@@ -1,4 +1,3 @@
-using System;
 using Game.Scripts.Data;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
@@ -12,9 +11,9 @@ namespace Game.Scripts.Hero
 	{
 		[SerializeField] private Rigidbody2D _rigidbody;
 		[SerializeField] private CharacterController2D _characterController;
-		[SerializeField] private HeroRotation _heroRotation;
-		[SerializeField] private PhysicsMovement _movement;
-
+		[SerializeField] private FlipHero _flipHero;
+		[SerializeField] private HeroAnimator _animator;
+		
 		private IInputService _inputService;
 
 		public float MovementSpeed;
@@ -22,7 +21,6 @@ namespace Game.Scripts.Hero
 		private bool _jump;
 		private bool _crouch = false;
 		private float _horizontalMove;
-		private float _verticalMove;
 
 		private void Awake()
 		{
@@ -31,13 +29,29 @@ namespace Game.Scripts.Hero
 
 		private void Update()
 		{
-			_horizontalMove = _inputService.Axis.x * MovementSpeed;
-			_verticalMove = _inputService.Axis.y;
-			
+			_horizontalMove = _inputService.Axis.x * MovementSpeed ;
+			if (_inputService.Axis.x > 0.25)
+			{
+				_animator.StartRun();
+			}
+			else
+			{
+				_animator.StopRun();
+			}
 		}
 
 		private void FixedUpdate()
 		{
+			if (_horizontalMove > 0 && !_flipHero.IsFacingRight)
+			{
+				_flipHero.Flip();
+				Debug.Log("1.5");
+			}
+			else if (_horizontalMove < 0 && _flipHero.IsFacingRight)
+			{
+				_flipHero.Flip();
+				Debug.Log("1");
+			}
 			_characterController.Move(_horizontalMove * Time.deltaTime, false);
 		}
 

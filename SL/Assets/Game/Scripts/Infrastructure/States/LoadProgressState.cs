@@ -6,6 +6,7 @@ namespace Game.Scripts.Infrastructure.States
 {
 	public class LoadProgressState : IState
 	{
+		private const string InitialLevel = "TestConstructor";
 		private readonly GameStateMachine _gameStateMachine;
 		private readonly IPersistentProgressService _progressService;
 		private readonly ISaveLoadService _saveLoadService;
@@ -35,7 +36,7 @@ namespace Game.Scripts.Infrastructure.States
 
 		private PlayerProgress NewProgress()
 		{
-			PlayerProgress progress = new PlayerProgress("Main");
+			PlayerProgress progress = new PlayerProgress(InitialLevel);
 
 			progress.HeroState.MaxHP = 50;
 			progress.HeroStats.Damage = 1f;

@@ -5,13 +5,12 @@ namespace Game.Scripts.PlatformLogic
 {
 	public class TiltPlatform : MonoBehaviour
 	{
-		[SerializeField]
-		private Rigidbody2D _rigibody;
+		[SerializeField] private Rigidbody2D _rigibody;
 
 		private void Update()
 		{
-			
-			_rigibody.rotation  = Mathf.Clamp(_rigibody.rotation, -30, 30);
+			transform.localRotation = Quaternion.Euler(0,0,Mathf.Clamp(_rigibody.rotation, -30, 30));
+			transform.localPosition = Vector3.zero;
 		}
 	}
 }

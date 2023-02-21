@@ -73,7 +73,7 @@ namespace Game.Scripts.Hero
 
 		public void OnLanding()
 		{
-			Animator.StopPlayJump();
+			Animator.StopJump();
 		}
 	}
 

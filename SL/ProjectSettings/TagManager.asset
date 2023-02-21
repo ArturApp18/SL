@@ -29,10 +29,10 @@ TagManager:
   - Enemy
   - Platforms
   - ExplosinosPlatform
-  - 
-  - 
-  - 
-  - 
+  - PopUpButtonPlaceHolder
+  - ActionButtonPlace
+  - Bullet
+  - BulletSpawner
   - 
   - 
   - 

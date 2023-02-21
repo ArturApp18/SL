@@ -17,7 +17,8 @@ namespace Game.Scripts.Hero
 		private static readonly int HitHash = Animator.StringToHash("Hit");
 		private static readonly int DieHash = Animator.StringToHash("Die");
 		private static readonly int IsJump = Animator.StringToHash("IsJumping");
-		private static readonly int IsRun = Animator.StringToHash("isRun");
+		private static readonly int IsRun = Animator.StringToHash("IsRun");
+		private static readonly int IsWalk = Animator.StringToHash("IsWalk");
 		private static readonly int Landing = Animator.StringToHash("Landing");
 		private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
 
@@ -52,20 +53,19 @@ namespace Game.Scripts.Hero
 
 		private void Update()
 		{
-			_animator.SetFloat(MoveHash, Math.Abs(_rigidbody.velocity.x), 0.1f, Time.deltaTime);
-
-
-			if (_animator.GetFloat(MoveHash) > 0.5)
-			{
-				_animator.SetBool(IsRun, true);
-			}
-			else
-			{
-				_animator.SetBool(IsRun, false);
-			}
+			_animator.SetFloat(MoveHash, _rigidbody.velocity.magnitude, 0.1f, Time.deltaTime);
 		}
 
 
+		public void StartRun()
+		{
+			_animator.SetBool(IsRun, true);
+		}
+
+		public void StopRun()
+		{
+			_animator.SetBool(IsRun, false);
+		}
 		public void PlayHit()
 		{
 			_animator.SetTrigger(HitHash);
@@ -76,7 +76,7 @@ namespace Game.Scripts.Hero
 			_animator.SetBool(IsJump, true);
 		}
 
-		public void StopPlayJump()
+		public void StopJump()
 		{
 			_animator.SetBool(IsJump, false);
 		}
