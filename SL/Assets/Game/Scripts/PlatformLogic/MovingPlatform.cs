@@ -1,5 +1,4 @@
 using System;
-using Game.Scripts.Enemy;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -9,7 +8,6 @@ namespace Game.Scripts.PlatformLogic
 	{
 		[SerializeField] private AnimationCurve _yAnimation;
 		[SerializeField] private AnimationCurve _xAnimation;
-		[SerializeField] private CollisionObserver PlayerTransform;
 		[SerializeField] private Rigidbody2D _rigidBody;
 
 		[SerializeField] private float _duration = 1;
@@ -19,34 +17,6 @@ namespace Game.Scripts.PlatformLogic
 		private float _expiredTime;
 		private bool _isEntered;
 		private Quaternion _rotation;
-
-		private void Start()
-		{
-			if (PlayerTransform != null)
-			{
-				PlayerTransform.CollisionEnter += CollisionEnter;
-				PlayerTransform.CollisionExit += CollisionExit;
-			}
-		}
-
-		private void OnDisable()
-		{
-			if (PlayerTransform != null)
-			{
-				PlayerTransform.CollisionEnter -= CollisionEnter;
-				PlayerTransform.CollisionExit -= CollisionExit;
-			}
-		}
-
-		private void CollisionEnter(Collision2D obj)
-		{
-			obj.transform.parent = transform;
-		}
-
-		private void CollisionExit(Collision2D obj)
-		{
-			obj.transform.parent = null;
-		}
 
 		private void FixedUpdate()
 		{

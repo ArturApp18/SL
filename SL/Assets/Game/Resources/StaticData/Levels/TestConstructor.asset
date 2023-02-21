@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: TestConstructor
   EnemySpawners: []
-  InitialHeroPosition: {x: -11.27, y: 8.75}
+  InitialHeroPosition: {x: -9.91, y: 25.6}
   SaveTriggers: {x: 0, y: 0}
   LevelTransfers: {x: -100, y: -100}

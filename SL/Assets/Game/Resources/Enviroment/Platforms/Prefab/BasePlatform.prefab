@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 515871576740784007}
   - component: {fileID: 515871576740784006}
   - component: {fileID: 1877947313940647559}
-  m_Layer: 6
+  m_Layer: 18
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,8 +176,8 @@ MonoBehaviour:
   PlayerTransform: {fileID: 1877947313940647559}
   _rigidBody: {fileID: 864211572758697265}
   _duration: 15
-  _wieght: 10
-  _height: 10
+  _wieght: 1
+  _height: 1
 --- !u!114 &1877947313940647559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 515871577779988908}
   - component: {fileID: 864211572758697265}
-  m_Layer: 6
+  m_Layer: 18
   m_Name: BasePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
