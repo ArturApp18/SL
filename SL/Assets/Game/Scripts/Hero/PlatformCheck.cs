@@ -12,7 +12,7 @@ namespace Game.Scripts.Hero
 		[SerializeField] private Transform platformBody;
 		[SerializeField] private Transform _rigidBody;
 		[SerializeField] private Vector3 _lastPlatformPosition;
-		private bool _isOnPlatform;
+		public bool _isOnPlatform;
 		private IInputService _input;
 
 		private void Awake()
@@ -37,20 +37,17 @@ namespace Game.Scripts.Hero
 			if (_isOnPlatform)
 			{
 				Vector3 deltaPosition = platformBody.position - _lastPlatformPosition;
-				_rigidBody.position = _rigidBody.position + deltaPosition;
+				_rigidBody.position += deltaPosition;
 				_lastPlatformPosition = platformBody.position;
 			}
 		}
 
 		private void TriggerEnter(Collider2D obj)
 		{
-			if (_input.Axis.x != 0)
-			{
-				platformBody = obj.gameObject.transform;
-				_lastPlatformPosition = platformBody.position;
-				Debug.Log("velocity" + platformBody.transform);
-				_isOnPlatform = true;
-			}
+			platformBody = obj.gameObject.transform;
+			_lastPlatformPosition = platformBody.position;
+			Debug.Log("velocity" + platformBody.transform);
+			_isOnPlatform = true;
 		}
 
 		private void TriggerExit(Collider2D obj)

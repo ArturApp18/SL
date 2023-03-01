@@ -219,8 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 4486813532280306893}
-  Follow: {fileID: 0}
+  Follow: {fileID: 877672780}
+  Aggro: {fileID: 877672782}
   Animator: {fileID: 6788562739076196154}
+  HurtBox: {fileID: 7699083939148378686}
   DeathFx: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!1 &2485223213796826573
 GameObject:

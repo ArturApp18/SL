@@ -1,5 +1,3 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Game.Scripts.PlatformLogic

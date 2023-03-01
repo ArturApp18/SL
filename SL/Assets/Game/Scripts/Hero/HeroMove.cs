@@ -11,8 +11,12 @@ namespace Game.Scripts.Hero
 	{
 		[SerializeField] private Rigidbody2D _rigidbody;
 		[SerializeField] private CharacterController2D _characterController;
-		[SerializeField] private FlipHero _flipHero;
+		[SerializeField] private HeroFlip heroFlip;
 		[SerializeField] private HeroAnimator _animator;
+
+		[SerializeField] private float _acceleration;
+		[SerializeField] private float _decceleration;
+		[SerializeField] private float _velocityPower;
 		
 		private IInputService _inputService;
 
@@ -29,8 +33,8 @@ namespace Game.Scripts.Hero
 
 		private void Update()
 		{
-			_horizontalMove = _inputService.Axis.x * MovementSpeed ;
-			if (_inputService.Axis.x > 0.25)
+			_horizontalMove = _inputService.Axis.x;
+			if (_inputService.Axis.normalized.x > 0.1)
 			{
 				_animator.StartRun();
 			}
@@ -42,17 +46,12 @@ namespace Game.Scripts.Hero
 
 		private void FixedUpdate()
 		{
-			if (_horizontalMove > 0 && !_flipHero.IsFacingRight)
-			{
-				_flipHero.Flip();
-				Debug.Log("1.5");
-			}
-			else if (_horizontalMove < 0 && _flipHero.IsFacingRight)
-			{
-				_flipHero.Flip();
-				Debug.Log("1");
-			}
-			_characterController.Move(_horizontalMove * Time.deltaTime, false);
+			float targetSpeed = _horizontalMove * MovementSpeed;
+			float speedDif = targetSpeed - _rigidbody.velocity.x;
+			float accelRate = ( Mathf.Abs(MovementSpeed) > 0.01f ) ? _acceleration : _decceleration;
+			float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _velocityPower) * Mathf.Sign(speedDif);
+			_rigidbody.AddForce(movement * Vector2.right, ForceMode2D.Force);
+
 		}
 
 		public void UpdateProgress(PlayerProgress progress) =>

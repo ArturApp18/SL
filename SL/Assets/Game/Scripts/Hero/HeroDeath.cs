@@ -12,6 +12,7 @@ namespace Game.Scripts.Hero
 
 		public HeroMove Move;
 		public HeroAttack Attack;
+		public HeroAim Aim;
 		public HeroAnimator Animator;
 
 		public GameObject DeathFx;
@@ -39,6 +40,7 @@ namespace Game.Scripts.Hero
 			
 			Move.enabled = false;
 			Attack.enabled = false;
+			Aim.enabled = false;
 			Animator.PlayDeath();
 			
 			Instantiate(DeathFx, transform.position, Quaternion.identity);

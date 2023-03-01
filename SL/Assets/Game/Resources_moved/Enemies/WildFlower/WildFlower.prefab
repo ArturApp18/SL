@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 28015fd64eb75e141be5f78c9b0cc904, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 28311953697891310, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: HurtBox
+      value: 
+      objectReference: {fileID: 6885112441932716096}
     - target: {fileID: 598598178170434737, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6
@@ -118,6 +122,10 @@ PrefabInstance:
     - target: {fileID: 1166578335002431531, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_Layer
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166578335002431531, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: m_TagString
+      value: Mob
       objectReference: {fileID: 0}
     - target: {fileID: 1600084338495558431, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_Size.x
@@ -137,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1600084338495558431, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_Direction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3320041209956777874, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_LocalPosition.y
@@ -233,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7699083939148378686, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8990813093536887562, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_RootOrder
@@ -250,6 +258,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1712453083, guid: 669d5622850618848b18e3cb010c8970, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+--- !u!70 &6885112441932716096 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1600084338495558431, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+  m_PrefabInstance: {fileID: 5312120499532467039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9182465765721419239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3951585990022702776, guid: 669d5622850618848b18e3cb010c8970, type: 3}

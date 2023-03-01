@@ -21,7 +21,9 @@ namespace Game.Scripts.Hero
 		private static readonly int IsWalk = Animator.StringToHash("IsWalk");
 		private static readonly int Landing = Animator.StringToHash("Landing");
 		private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+		private static readonly int IsJumpAttack = Animator.StringToHash("IsJumpAttack");
 
+		private static readonly int IsReload = Animator.StringToHash("IsReload");
 		private readonly int _idleStateHash = Animator.StringToHash("Idle");
 		private readonly int _idleStateFullHash = Animator.StringToHash("Base Layer.Idle");
 		private readonly int _attackStateHash = Animator.StringToHash("Attack");
@@ -66,11 +68,21 @@ namespace Game.Scripts.Hero
 		{
 			_animator.SetBool(IsRun, false);
 		}
+
 		public void PlayHit()
 		{
 			_animator.SetTrigger(HitHash);
 		}
 
+		public void PlayReload()
+		{
+			_animator.SetBool(IsReload, true);
+		}
+		
+		public void StopReload()
+		{
+			_animator.SetBool(IsReload, false);
+		}
 		public void PlayJump()
 		{
 			_animator.SetBool(IsJump, true);

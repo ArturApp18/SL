@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: TestConstructor
   m_EditorClassIdentifier: 
   LevelKey: TestConstructor
-  EnemySpawners: []
-  InitialHeroPosition: {x: -9.91, y: 25.6}
+  EnemySpawners:
+  - Id: TestConstructor_c005c456-a5f3-4b2d-b0a2-ab86c4ab3405
+    MonsterTypeId: 10
+    Position: {x: 2.12, y: -5.74, z: 0}
+  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
+    MonsterTypeId: 0
+    Position: {x: -0.06, y: -5.44, z: 0}
+  InitialHeroPosition: {x: -8.5, y: -2.3}
   SaveTriggers: {x: 0, y: 0}
   LevelTransfers: {x: -100, y: -100}

@@ -11,6 +11,7 @@ namespace Game.Scripts.Enemy
 		public Follow Follow;
 		public Aggro Aggro;
 		public EnemyAnimator Animator;
+		public Collider2D HurtBox;
 
 		public GameObject DeathFx;
 
@@ -35,11 +36,10 @@ namespace Game.Scripts.Enemy
 		private void Die()
 		{
 			Health.HealthChanged -= HealthChanged;
-			if (Follow != null)
-			{
-				Follow.enabled = false;
-			}
+
+			Follow.enabled = false;
 			Aggro.enabled = false;
+
 			Animator.PlayDeath();
 
 			SpawnDeathFx();

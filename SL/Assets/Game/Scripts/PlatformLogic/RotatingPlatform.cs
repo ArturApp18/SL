@@ -15,14 +15,14 @@ namespace Game.Scripts.PlatformLogic
 
 		private void Start()
 		{
-			_collisionObserver.CollisionEnter += CollisionEnter;
-			_collisionObserver.CollisionExit += CollisionExit;
+			//_collisionObserver.CollisionEnter += CollisionEnter;
+			//_collisionObserver.CollisionExit += CollisionExit;
 		}
 
 		private void OnDisable()
 		{
-			_collisionObserver.CollisionEnter -= CollisionEnter;
-			_collisionObserver.CollisionExit -= CollisionExit;
+			//_collisionObserver.CollisionEnter -= CollisionEnter;
+			//_collisionObserver.CollisionExit -= CollisionExit;
 		}
 		private void CollisionEnter(Collision2D obj)
 		{

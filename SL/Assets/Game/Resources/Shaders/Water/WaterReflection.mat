@@ -65,9 +65,9 @@ Material:
     - _EnableExternalAlpha: 0
     - _Mirror_Reflection: 1
     - _RefractionStrength: 1
-    - _WaterSpeed: 0.03
+    - _WaterSpeed: 0.07
     m_Colors:
-    - _Color: {r: 0.44705883, g: 0.646771, b: 0.78431374, a: 1}
+    - _Color: {r: 0.7276166, g: 0.76047146, b: 0.7830189, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
