@@ -13,7 +13,9 @@ namespace Game.Scripts.Hero
 
 		private static readonly int MoveHash = Animator.StringToHash("Walking");
 		private static readonly int JumpHash = Animator.StringToHash("Jumping");
-		private static readonly int AttackHash = Animator.StringToHash("Attack");
+		private static readonly int AttackHash1 = Animator.StringToHash("Attack1");
+		private static readonly int AttackHash2 = Animator.StringToHash("Attack2");
+		private static readonly int AttackHash3 = Animator.StringToHash("Attack3");
 		private static readonly int HitHash = Animator.StringToHash("Hit");
 		private static readonly int DieHash = Animator.StringToHash("Die");
 		private static readonly int IsJump = Animator.StringToHash("IsJumping");
@@ -105,7 +107,16 @@ namespace Game.Scripts.Hero
 
 		public void PlayAttack()
 		{
-			_animator.SetTrigger(AttackHash);
+			_animator.SetTrigger(AttackHash1);
+		}
+		public void PlayAttack2()
+		{
+			_animator.SetTrigger(AttackHash2);
+		}
+		
+		public void PlayAttack3()
+		{
+			_animator.SetTrigger(AttackHash3);
 		}
 
 		public void PlayDeath()

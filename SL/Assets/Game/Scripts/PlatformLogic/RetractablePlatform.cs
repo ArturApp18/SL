@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,15 +10,19 @@ namespace Game.Scripts.PlatformLogic
 
 		public bool MoveToStartPosition;
 		public bool MoveToFinishPosition;
+		public bool Independed;
+		
 		public float Distance;
-
+		
 		public Vector3 _startPos;
 		public Vector3 _finishPos;
+		[SerializeField]
+		private float _duration;
 
 		private void Start()
 		{
 			_startPos = transform.localPosition;
-			_finishPos = new Vector3(_startPos.x, _startPos.y + Distance);
+			_finishPos = new Vector3(_startPos.x  + Distance, _startPos.y);
 		}
 
 		public void PushIn()
@@ -43,6 +46,15 @@ namespace Game.Scripts.PlatformLogic
 			else if (MoveToFinishPosition && transform.localPosition != _finishPos)
 			{
 				transform.localPosition = Vector3.Lerp(transform.localPosition, _finishPos, Time.deltaTime * _speed);
+			}
+
+			if (transform.localPosition == _finishPos)
+			{
+				PushIn();
+			}
+			else if (transform.localPosition == _startPos)
+			{
+				PushOut();
 			}
 		}
 	}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: TestLevel
   EnemySpawners: []
-  InitialHeroPosition: {x: -9.39, y: -2.33}
-  SaveTriggers: {x: 0, y: 0}
-  LevelTransfers: {x: 0, y: 0}
+  InitialHeroPosition: {x: 10.35, y: -3.1}
+  SaveTriggers: {x: -121.51, y: 0}
+  LevelTransfers: {x: -91.33, y: 0}

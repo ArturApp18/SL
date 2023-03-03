@@ -14464,7 +14464,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 4791678506316572765}
   _triggerObserver: {fileID: 180690525041604256}
   _impactVFX: {fileID: 3665955448620238560}
-  _damage: 0
+  _damage: 1
   _bulletLifeTime: 5
   _bulletLifeTimeLeft: 0
   _PosZ: 0
