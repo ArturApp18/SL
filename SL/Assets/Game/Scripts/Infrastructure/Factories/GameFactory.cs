@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Game.Scripts.Enemy;
+using Game.Scripts.Hero;
 using Game.Scripts.Infrastructure.AssetManagement;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
 using Game.Scripts.Infrastructure.Services.Randomize;
@@ -8,6 +9,7 @@ using Game.Scripts.Infrastructure.Services.StaticData;
 using Game.Scripts.Infrastructure.States;
 using Game.Scripts.Logic;
 using Game.Scripts.Logic.EnemySpawners;
+using Game.Scripts.Services.Input;
 using Game.Scripts.StaticData;
 using Game.Scripts.UI.Elements;
 using Game.Scripts.UI.Services.Window;
@@ -27,13 +29,16 @@ namespace Game.Scripts.Infrastructure.Factories
 		private readonly IRandomService _randomService;
 		private readonly IPersistentProgressService _progressService;
 		private readonly IWindowsService _windowsService;
+		private readonly IInputService _inputService;
 		private readonly IGameStateMachine _stateMachine;
 
-		private GameObject HeroGameObject { get; set; }
+		private GameObject _heroGameObject;
 
-		public GameFactory(IAssets assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IRandomService randomService,
+		public GameFactory(IInputService inputService, IAssets assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService,
+			IRandomService randomService,
 			IWindowsService windowsService, IGameStateMachine stateMachine)
 		{
+			_inputService = inputService;
 			_assets = assets;
 			_staticData = staticData;
 			_progressService = persistentProgressService;
@@ -50,18 +55,25 @@ namespace Game.Scripts.Infrastructure.Factories
 
 		public async Task<GameObject> CreateHero(Vector3 at)
 		{
-			//HeroStaticData heroData = _staticData.ForHero(at);
-			HeroGameObject = await InstantiatedRegisteredAsync(AssetAddress.HeroPath, at);
+			HeroStaticData heroStaticData = _staticData.ForHero();
 
-			/*State health = _progressService.Progress.HeroState;
-			health.CurrentHP = heroData.Hp;
-			health.MaxHP = heroData.Hp;
+			_heroGameObject = await InstantiatedRegisteredAsync(AssetAddress.HeroPath, at);
 
-			HeroGameObject.GetComponent<HeroMove>().MovementSpeed = heroData.MoveSpeed;
-			Stats heroStats = _progressService.Progress.HeroStats;
-			heroStats.Damage = heroData.Damage;
-			heroStats.DamageRadius = heroData.Cleavage;*/
-			return HeroGameObject;
+			IHealth health = _heroGameObject.GetComponent<IHealth>();
+
+			_heroGameObject.GetComponent<HeroMove>().Construct(_inputService);
+	
+			_heroGameObject.GetComponent<HeroJump>().Construct(_inputService);
+
+			_heroGameObject.GetComponent<HeroAim>().Construct(_inputService);
+
+			_heroGameObject.GetComponent<HeroAttack>().Construct(_inputService);
+
+			_heroGameObject.GetComponent<HeroFlip>().Construct(_inputService);
+			
+			_heroGameObject.GetComponent<WallSlide>().Construct(_inputService);
+			
+			return _heroGameObject;
 		}
 
 
@@ -99,19 +111,20 @@ namespace Game.Scripts.Infrastructure.Factories
 			GameObject monster = Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
 
 			IHealth health = monster.GetComponent<IHealth>();
+
 			health.Current = monsterData.Hp;
 			health.Max = monsterData.Hp;
 
-			monster.GetComponent<AgentMoveToHero>().Construct(HeroGameObject.transform);
+			monster.GetComponent<AgentMoveToHero>().Construct(_heroGameObject.transform);
 			monster.GetComponent<AgentMoveToHero>().MovementSpeed = monsterData.MoveSpeed;
-			
+
 
 			LootSpawner lootSpawner = monster.GetComponentInChildren<LootSpawner>();
 			lootSpawner.SetLoot(monsterData.MinLoot, monsterData.MaxLoot);
 			lootSpawner.Construct(this, _randomService);
 
 			Attack attack = monster.GetComponent<Attack>();
-			attack.Construct(HeroGameObject.transform);
+			attack.Construct(_heroGameObject.transform);
 			attack.Damage = monsterData.Damage;
 			attack.Cleavage = monsterData.Cleavage;
 			attack.EffectiveDistance = monsterData.EffectiveDistance;

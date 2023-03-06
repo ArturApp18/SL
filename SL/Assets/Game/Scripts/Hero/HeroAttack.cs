@@ -17,12 +17,27 @@ namespace Game.Scripts.Hero
 		private static int _layerMask;
 		private Collider2D[] _hits = new Collider2D[3];
 		private Stats _stats;
-		
+		public Stats Stats
+		{
+			get
+			{
+				return _stats;
+			}
+			set
+			{
+				_stats = value;
+			}
+		}
 
+
+		public void Construct(IInputService input)
+		{
+			_input = input;
+		}
 		
 		private void Awake()
 		{
-			_input = AllServices.Container.Single<IInputService>();
+			
 
 			_layerMask = 1 << LayerMask.NameToLayer("Hittable");
 		}
@@ -37,15 +52,15 @@ namespace Game.Scripts.Hero
 		{
 			for (int i = 0; i < Hit(); i++)
 			{
-				_hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(_stats.Damage);
+				_hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Stats.Damage);
 			}
 		}
 
 		public void LoadProgress(PlayerProgress progress) =>
-			_stats = progress.HeroStats;
+			Stats = progress.HeroStats;
 
 		private int Hit() =>
-			Physics2D.OverlapCircleNonAlloc(StartPoint(), _stats.DamageRadius, _hits, _layerMask);
+			Physics2D.OverlapCircleNonAlloc(StartPoint(), Stats.DamageRadius, _hits, _layerMask);
 
 		private void ChooseSide()
 		{

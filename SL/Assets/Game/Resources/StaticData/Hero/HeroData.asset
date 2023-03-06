@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f777e6ee96a4b06b4a0542f46f1f891, type: 3}
-  m_Name: Hero
+  m_Name: HeroData
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
-  Hp: 25
-  Damage: 5.7
-  MoveSpeed: 5.91
-  EffectiveDistance: 0.666
-  Cleavage: 0.655
+  Prefab: {fileID: 4176280489786542288, guid: 35bc321087bef8f46b2f76525c4696a7, type: 3}
+  Hp: 100
+  Damage: 30
+  MoveSpeed: 4.5
+  EffectiveDistance: 0.5
+  Cleavage: 0.5

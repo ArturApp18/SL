@@ -17,19 +17,19 @@ MonoBehaviour:
   EnemySpawners:
   - Id: TestLevel_e09f640d-a44a-4001-9fc8-74389a83a595
     MonsterTypeId: 0
-    Position: {x: 13.74, y: -3.59, z: 0.008027896}
+    Position: {x: 5.7804, y: -5.7735, z: -20.644}
   - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
     MonsterTypeId: 10
-    Position: {x: 17.37, y: 2.13, z: 0.008027896}
+    Position: {x: 11.464, y: 3.1822, z: -20.644}
   - Id: TestLevel_28533570-1ffc-4bfb-8b1a-f3e2d2cefd36
     MonsterTypeId: 0
-    Position: {x: -0.82, y: -2.14, z: 0.008027896}
+    Position: {x: -17.016, y: -3.5033, z: -20.644}
   - Id: TestLevel_254d632f-8f47-47ea-aa6a-72f8337053ce
     MonsterTypeId: 0
-    Position: {x: 32.84, y: 1.98, z: 0.008027896}
+    Position: {x: 35.685, y: 2.9473, z: -20.644}
   - Id: TestLevel_3b34d08d-4513-4b02-8668-f7dbf5553135
     MonsterTypeId: 0
-    Position: {x: 27.03, y: -3.64, z: 0.008027896}
-  InitialHeroPosition: {x: -6.15, y: -3.89}
-  SaveTriggers: {x: 22.47, y: -3.26}
-  LevelTransfers: {x: 28.9, y: -3.8}
+    Position: {x: 26.588, y: -5.8518, z: -20.644}
+  InitialHeroPosition: {x: -25.361, y: -6.2432}
+  SaveTriggers: {x: 19.449, y: -5.2569}
+  LevelTransfers: {x: 29.516, y: -6.1023}

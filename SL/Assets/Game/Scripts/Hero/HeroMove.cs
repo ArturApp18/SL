@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Data;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
@@ -26,9 +27,9 @@ namespace Game.Scripts.Hero
 		private bool _crouch = false;
 		private float _horizontalMove;
 
-		private void Awake()
+		public void Construct(IInputService input)
 		{
-			_inputService = AllServices.Container.Single<IInputService>();
+			_inputService = input;
 		}
 
 		private void Update()
@@ -75,4 +76,7 @@ namespace Game.Scripts.Hero
 			transform.position = to.AsUnityVector();
 		}
 	}
+
+	public class WallJump: MonoBehaviour{}
+
 }

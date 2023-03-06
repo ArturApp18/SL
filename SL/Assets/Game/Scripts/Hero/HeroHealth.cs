@@ -18,7 +18,7 @@ namespace Game.Scripts.Hero
 			get => _state.CurrentHP;
 			set
 			{
-				if(_state.CurrentHP != value)
+				if (_state.CurrentHP != value)
 				{
 					_state.CurrentHP = value;
 					HealthChanged?.Invoke();

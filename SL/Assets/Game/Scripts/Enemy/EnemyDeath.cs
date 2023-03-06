@@ -36,10 +36,10 @@ namespace Game.Scripts.Enemy
 		private void Die()
 		{
 			Health.HealthChanged -= HealthChanged;
-
+			
 			Follow.enabled = false;
 			Aggro.enabled = false;
-
+			
 			Animator.PlayDeath();
 
 			SpawnDeathFx();

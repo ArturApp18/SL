@@ -61,11 +61,13 @@ namespace Game.Scripts.Infrastructure.States
 			_services.RegisterSingle<IWindowsService>(new WindowsService(_services.Single<IUIFactory>()));
 			
 			_services.RegisterSingle<IGameFactory>(new GameFactory(
+				_services.Single<IInputService>(),
 				_services.Single<IAssets>(),
 				_services.Single<IStaticDataService>(),
 				_services.Single<IPersistentProgressService>(), 
 				_services.Single<IRandomService>(),
 			_services.Single<IWindowsService>(),
+			
 				_stateMachine));
 			
 			_services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));
@@ -89,7 +91,7 @@ namespace Game.Scripts.Infrastructure.States
 		private void RegisterStaticData()
 		{
 			IStaticDataService staticData = new StaticDataService();
-			staticData.LoadMonsters();
+			staticData.LoadStaticData();
 			_services.RegisterSingle(staticData);
 		}
 

@@ -9,32 +9,42 @@ namespace Game.Scripts.Hero
 	{
 		public Rigidbody2D Rigidbody;
 		public HeroAnimator Animator;
-		
+
 		[SerializeField] private CharacterController2D _characterController2D;
 
-		[SerializeField] private float _jumpForce;
 		[SerializeField] private float _jumpTimeCounter = 0.2f;
 		[SerializeField] private float _groundeTimeCounter;
 		[SerializeField] private float _cutJumpHeight;
-		
+
 		private float _jumpPressedRemember = 0;
 		private float _groundedRemember;
 
 		private bool _isJumping = false;
-		
+
 		private IInputService _input;
-		[SerializeField]
-		private int _maxJumps;
-		[SerializeField]
-		private int _currentJumps;
-		[SerializeField]
-		private bool _isDoubleJumping;
-		[SerializeField]
-		private float _doubleJumpForce;
+		
+		[SerializeField] private int _maxJumps;
+		[SerializeField] private int _currentJumps;
+		[SerializeField] private bool _isDoubleJumping; 
+		[SerializeField] private bool _isWallJumping;
+		[SerializeField] private WallSlide _wallSlide;
+		
+		public Vector2 WallJumpDirection = new Vector2(8,16);
+
+		public float JumpForce;
+		public float DoubleJumpForce;
+		public float WallJumpForce;
+		public float WallJumpTime;
+		public float WallJumpCounter;
+		public float WallJumpCDuration;
+
+		public void Construct(IInputService input)
+		{
+			_input = input;
+		}
 
 		private void Awake()
 		{
-			_input = AllServices.Container.Single<IInputService>();
 			_currentJumps = _maxJumps;
 		}
 
@@ -79,13 +89,13 @@ namespace Game.Scripts.Hero
 			{
 				_jumpPressedRemember = 0;
 				_groundedRemember = 0;
-				Jump(_jumpForce * transform.up);
+				Jump(JumpForce * transform.up);
 				Debug.Log("yojump");
 			}
 
 			if (_isDoubleJumping)
 			{
-				Jump(_doubleJumpForce * transform.up);
+				Jump(DoubleJumpForce * transform.up);
 				_isDoubleJumping = false;
 			}
 		}
@@ -94,6 +104,29 @@ namespace Game.Scripts.Hero
 		{
 			Rigidbody.AddForce(force, ForceMode2D.Impulse);
 			_currentJumps--;
+		}
+
+		private void WallJump()
+		{
+			if (_wallSlide.WallSliding)
+			{
+				_isWallJumping = false;
+				WallJumpForce = -transform.right.x;
+				WallJumpCounter = WallJumpTime;
+			}
+			else
+			{
+				WallJumpCounter -= Time.deltaTime;
+			}
+
+			if (_input.IsJumpButtonDown() && _characterController2D.m_WallDetected)
+			{
+				_isWallJumping = true;
+				Rigidbody.AddForce(WallJumpForce * -transform.right, ForceMode2D.Impulse);
+				WallJumpCounter = 0f;
+
+			
+			}
 		}
 
 		public void OnLanding()

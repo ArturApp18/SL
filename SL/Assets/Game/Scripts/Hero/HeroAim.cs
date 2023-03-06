@@ -8,36 +8,26 @@ namespace Game.Scripts.Hero
 	public class HeroAim : MonoBehaviour
 	{
 		[SerializeField] private Transform _aim;
-		[SerializeField] private Transform _aimTarget;
-		[SerializeField] private CharacterController2D _controller;
+		[SerializeField] private Transform _target;
+		[SerializeField] private Transform _shootPosition;
+		[SerializeField] private LayerMask _targetMask;
+		[SerializeField] private LineRenderer _lineRenderer;
 		[SerializeField] private HeroFlip heroFlip;
-		[SerializeField] private AimAssist _aimAssist;
-		[SerializeField] private float _returnTime;
-		[SerializeField] private float _aimSpeed;
-		[SerializeField] private float _thresHold;
+
+		public float ReturnTime;
+		public float AimSpeed;
+		public float TresHold;
 
 
 		private IInputService _inputService;
-		public Vector3 _degrece;
-		[SerializeField]
-		private float Test;
-		[SerializeField]
-		private Vector2 Test2;
-		[SerializeField]
-		private Transform _target;
-		[SerializeField]
-		private LayerMask _targetMask;
-		[SerializeField]
-		private LineRenderer _lineRenderer;
-		[SerializeField]
-		private Vector3 targetPosition;
-		[SerializeField]
-		private Vector2 Test3;
 		private Vector2 _inputDirection;
 
+		public void Construct(IInputService input)
+		{
+			_inputService = input;
+		}
 		private void Awake()
 		{
-			_inputService = AllServices.Container.Single<IInputService>();
 			_targetMask = 1 << LayerMask.NameToLayer("Hittable");
 		}
 
@@ -46,8 +36,8 @@ namespace Game.Scripts.Hero
 			if (_aim != null)
 			{
 				_inputDirection = new Vector2(_inputService.AimAxis.x, _inputService.AimAxis.y);
-				Vector3 aimPosition = _aim.position;
-				Vector3 aimDirection = _aim.right;
+				Vector3 aimPosition = _shootPosition.position;
+				Vector3 aimDirection = _shootPosition.right;
 				RaycastHit2D hit = Physics2D.Raycast(aimPosition, aimDirection, 20, _targetMask);
 				Vector3 endPosition = hit ? hit.point : aimPosition + aimDirection * 100;
 				_lineRenderer.SetPositions(new Vector3[] { aimPosition, endPosition });
@@ -56,16 +46,13 @@ namespace Game.Scripts.Hero
 
 		private void FixedUpdate()
 		{
-			Test2 = _inputDirection;
 			Aim();
 		}
 
 		private void Aim()
 		{
 			Vector3 angle = _aim.localEulerAngles;
-			_degrece = angle;
-			_degrece.z = angle.z;
-			//Test3 = Mathf.Clamp(Mathf.Atan2(_inputService.AimAxis.x, _inputService.AimAxis.y) / Mathf.PI + 90, -40, 60);
+
 			if (HandlerIdle())
 			{
 				BackToHomeRotation(angle);
@@ -83,9 +70,8 @@ namespace Game.Scripts.Hero
 			if (target != null)
 			{
 				Vector2 directionTarget = target.position - _aim.position;
-				if (Vector2.Distance(_inputDirection, directionTarget.normalized) < _thresHold)
+				if (Vector2.Distance(_inputDirection, directionTarget.normalized) < TresHold)
 				{
-					Test3 = directionTarget.normalized;
 					RotateTowardsTarget(directionTarget.normalized);
 				}
 				else
@@ -114,7 +100,7 @@ namespace Game.Scripts.Hero
 				homeRotation = Vector3.zero;
 			}
 
-			_aim.localEulerAngles = Vector3.Slerp(angle, homeRotation, Time.deltaTime * _returnTime);
+			_aim.localEulerAngles = Vector3.Slerp(angle, homeRotation, Time.deltaTime * ReturnTime);
 		}
 
 		private float LookingDirection()
@@ -137,7 +123,6 @@ namespace Game.Scripts.Hero
 
 			if (hit2D != null)
 			{
-				targetPosition = hit2D.point;
 				return hit2D.transform;
 			}
 
@@ -156,7 +141,7 @@ namespace Game.Scripts.Hero
 			{
 				targetRotation = Quaternion.Euler(new Vector3(0, 180, angle));
 			}
-			_aim.rotation = Quaternion.Lerp(_aim.rotation, targetRotation, Time.deltaTime * _aimSpeed);
+			_aim.rotation = Quaternion.Lerp(_aim.rotation, targetRotation, Time.deltaTime * AimSpeed);
 		}
 	}
 }

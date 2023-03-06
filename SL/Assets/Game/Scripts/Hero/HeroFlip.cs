@@ -11,9 +11,9 @@ namespace Game.Scripts.Hero
 
 		private IInputService _inputService;
 
-		private void Awake()
+		public void Construct(IInputService input)
 		{
-			_inputService = AllServices.Container.Single<IInputService>();
+			_inputService = input;
 		}
 
 		public bool IsFacingRight

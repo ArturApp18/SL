@@ -112,6 +112,8 @@ namespace Game.Scripts.Infrastructure.States
 			Camera.main
 				.GetComponent<CameraFollow>()
 				.Follow(hero);
+			
 		}
+		
 	}
 }
