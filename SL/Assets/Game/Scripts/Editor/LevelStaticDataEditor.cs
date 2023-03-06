@@ -13,7 +13,7 @@ namespace Game.Scripts.Editor
 	{
 		private const string SaveTriggerTag = "SaveTrigger";
 		private const string InitialPointTag = "InitialPoint";
-		private const string Leveltransfer = "LevelTransfer";
+		private const string LevelTransfer = "LevelTransfer";
 
 		public override void OnInspectorGUI()
 		{
@@ -30,12 +30,12 @@ namespace Game.Scripts.Editor
 				
 				levelData.LevelKey = SceneManager.GetActiveScene().name;
 				levelData.InitialHeroPosition = GameObject.FindWithTag(InitialPointTag).transform.position;
-				levelData.SaveTriggers = GameObject.FindGameObjectWithTag(SaveTriggerTag).transform.position;
+				
+				levelData.SaveTriggers = GameObject.FindWithTag(SaveTriggerTag).transform.position;
 		
-				levelData.LevelTransfers = GameObject.FindGameObjectWithTag(Leveltransfer).transform.position;
+				levelData.LevelTransfers = GameObject.FindWithTag(LevelTransfer).transform.position;
 			}
-
-
+			
 			EditorUtility.SetDirty(target);
 		}
 	}

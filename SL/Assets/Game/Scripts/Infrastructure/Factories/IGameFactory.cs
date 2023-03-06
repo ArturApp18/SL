@@ -20,7 +20,7 @@ namespace Game.Scripts.Infrastructure.Factories
 		Task CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
 
 		Task CreateSaveTriggers(Vector2 at);
-		Task CreateLevelTransfer(Vector2 at);
+		Task CreateLevelTransfer(Vector2 at, string levelKey);
 		Task WarmUp();
 	}
 }

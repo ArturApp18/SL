@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BigTree
   m_EditorClassIdentifier: 
   LevelKey: BigTree
+  LevelTransferKey: 
   EnemySpawners: []
   InitialHeroPosition: {x: -3.67, y: -2.19}
   SaveTriggers: {x: -8.67, y: -3.234}

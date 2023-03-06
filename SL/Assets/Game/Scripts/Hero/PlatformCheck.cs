@@ -32,7 +32,7 @@ namespace Game.Scripts.Hero
 			PlayerTransform.TriggerExit -= TriggerExit;
 		}
 
-		private void FixedUpdate()
+		private void Update()
 		{
 			if (_isOnPlatform)
 			{

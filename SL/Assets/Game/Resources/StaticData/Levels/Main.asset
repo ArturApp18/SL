@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d42614ae583d4adf837683e7fc844355, type: 3}
-  m_Name: Jungle
+  m_Name: Main
   m_EditorClassIdentifier: 
   LevelKey: Main
+  LevelTransferKey: TestLevel
   EnemySpawners:
-  - Id: Main_71557d19-6ab1-40a4-b79e-8e7f04d47b59
-    MonsterTypeId: 0
-    Position: {x: -1.7700002, y: -3.68, z: 0.016055793}
   - Id: Main_a259a27b-0c15-49e5-ba0c-0d08731ef0ae
     MonsterTypeId: 0
     Position: {x: 36.98, y: -2.52, z: 0.016055793}
@@ -29,9 +27,12 @@ MonoBehaviour:
   - Id: Main_d3b9201f-7453-4bf7-8860-ee83d41e9e8d
     MonsterTypeId: 0
     Position: {x: 35.19, y: -2.54, z: 0.016055793}
+  - Id: Main_71557d19-6ab1-40a4-b79e-8e7f04d47b59
+    MonsterTypeId: 0
+    Position: {x: -1.7700002, y: -3.68, z: 0.016055793}
   - Id: Main_f4aac1d0-53d4-41c2-9c91-065a2f01ecb6
     MonsterTypeId: 0
     Position: {x: 49.12, y: -2.53, z: 0.016055793}
-  InitialHeroPosition: {x: -7.24, y: -2.85}
-  SaveTriggers: {x: -2.9, y: -2.92}
-  LevelTransfers: {x: -8.23, y: 2.64}
+  InitialHeroPosition: {x: -13.6, y: -2.91}
+  SaveTriggers: {x: 0.69, y: -2.47}
+  LevelTransfers: {x: 65.27, y: -2.99}

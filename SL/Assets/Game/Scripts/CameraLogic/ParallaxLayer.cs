@@ -4,8 +4,9 @@ namespace Game.Scripts.CameraLogic
 {
 	public class ParallaxLayer : MonoBehaviour
 	{
-		[SerializeField, Range(0,1)] float multiplier = 0.0f;
-		[SerializeField] bool horizontalOnly = true;
+		[SerializeField, Range(0,1)]  private float multiplier = 0.0f;
+		[SerializeField, Range(1,10)] private float _speed;
+		[SerializeField] private bool horizontalOnly = true;
 
 		private Transform cameraTransform;
 
@@ -28,7 +29,7 @@ namespace Game.Scripts.CameraLogic
 			else
 				position += multiplier * (cameraTransform.position - startCameraPos);
 
-			transform.position = position;
+			transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * _speed);
 		}
 	}
 }

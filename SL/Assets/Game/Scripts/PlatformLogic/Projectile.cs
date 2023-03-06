@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Game.Scripts.PlatformLogic
@@ -9,8 +10,8 @@ namespace Game.Scripts.PlatformLogic
 
         private void Start()
         {
-            _rigidbody.velocity = Vector2.left * speed;
-        
+            _rigidbody.velocity = -transform.right * speed;
+            Destroy(gameObject, 3);
         }
         private void OnCollisionEnter2D(Collision2D col)
         {

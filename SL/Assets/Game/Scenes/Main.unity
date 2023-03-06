@@ -367,7 +367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &142865377
 Transform:
   m_ObjectHideFlags: 0
@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.9
+  _speed: 0
   horizontalOnly: 1
 --- !u!212 &362210885
 SpriteRenderer:
@@ -1156,6 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.107
+  _speed: 0
   horizontalOnly: 0
 --- !u!1 &802745214
 GameObject:
@@ -1457,7 +1459,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.93
+    OrthographicSize: 2.7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1934,6 +1936,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameRunner
       objectReference: {fileID: 0}
+    - target: {fileID: 820615928741990370, guid: ccf9124375bd9d847aa1df618d112b0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1619916149643043460, guid: ccf9124375bd9d847aa1df618d112b0d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2011,6 +2017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.9
+  _speed: 0
   horizontalOnly: 1
 --- !u!212 &1030706452
 SpriteRenderer:
@@ -2109,6 +2116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.97
+  _speed: 0
   horizontalOnly: 1
 --- !u!4 &1046571194
 Transform:
@@ -2921,6 +2929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.9
+  _speed: 0
   horizontalOnly: 1
 --- !u!212 &1535833332
 SpriteRenderer:
@@ -4206,6 +4215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.9
+  _speed: 0
   horizontalOnly: 0
 --- !u!4 &179431778662337034
 Transform:
@@ -4262,7 +4272,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.93
+  orthographic size: 2.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4382,6 +4392,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2371802965615985792, guid: 3138923ae6e6c9d4f88735ebc6e8c93f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 2371802965615985792, guid: 3138923ae6e6c9d4f88735ebc6e8c93f, type: 3}
       propertyPath: m_Name
       value: LevelTransferTriggerMark
       objectReference: {fileID: 0}
@@ -4399,11 +4413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2371802965615985797, guid: 3138923ae6e6c9d4f88735ebc6e8c93f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.23
+      value: 65.27
       objectReference: {fileID: 0}
     - target: {fileID: 2371802965615985797, guid: 3138923ae6e6c9d4f88735ebc6e8c93f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.64
+      value: -2.99
       objectReference: {fileID: 0}
     - target: {fileID: 2371802965615985797, guid: 3138923ae6e6c9d4f88735ebc6e8c93f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4460,11 +4474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5093147773592303960, guid: b97ad757d3688ae43ad454ca02531e2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 5093147773592303960, guid: b97ad757d3688ae43ad454ca02531e2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.92
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 5093147773592303960, guid: b97ad757d3688ae43ad454ca02531e2f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4503,6 +4517,10 @@ PrefabInstance:
       value: SaveTriggerMark
       objectReference: {fileID: 0}
     - target: {fileID: 5093147773592303965, guid: b97ad757d3688ae43ad454ca02531e2f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093147773592303965, guid: b97ad757d3688ae43ad454ca02531e2f, type: 3}
       propertyPath: m_TagString
       value: SaveTrigger
       objectReference: {fileID: 0}
@@ -4533,11 +4551,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1567494897174267703, guid: c7f33a186f8e0a744b437a4fb8bd36d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.24
+      value: -13.6
       objectReference: {fileID: 0}
     - target: {fileID: 1567494897174267703, guid: c7f33a186f8e0a744b437a4fb8bd36d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.85
+      value: -2.91
       objectReference: {fileID: 0}
     - target: {fileID: 1567494897174267703, guid: c7f33a186f8e0a744b437a4fb8bd36d9, type: 3}
       propertyPath: m_LocalPosition.z

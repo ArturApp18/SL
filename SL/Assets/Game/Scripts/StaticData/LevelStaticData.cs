@@ -8,6 +8,7 @@ namespace Game.Scripts.StaticData
 	public class LevelStaticData : ScriptableObject
 	{
 		public string LevelKey;
+		public string LevelTransferKey;
 
 		public List<EnemySpawnerData> EnemySpawners;
 

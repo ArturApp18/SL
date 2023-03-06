@@ -34,7 +34,7 @@ namespace Game.Scripts.Hero
 		private void Update()
 		{
 			_horizontalMove = _inputService.Axis.x;
-			if (_inputService.Axis.normalized.x > 0.1)
+			if (_inputService.Axis.magnitude > 0.1)
 			{
 				_animator.StartRun();
 			}

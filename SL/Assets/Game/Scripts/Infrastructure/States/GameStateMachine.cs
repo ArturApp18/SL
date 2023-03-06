@@ -23,7 +23,7 @@ namespace Game.Scripts.Infrastructure.States
 				[typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Single<IGameFactory>(), services.Single<IPersistentProgressService>(),
 					services.Single<IStaticDataService>(), services.Single<IUIFactory>()),
 				[typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>()),
-				[typeof(GameLoopState)] = new GameLoopState(this)
+				[typeof(GameLoopState)] = new GameLoopState(this),
 			};
 		}
 

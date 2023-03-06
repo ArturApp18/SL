@@ -18,6 +18,10 @@ namespace Game.Scripts.Infrastructure.Factories
 {
 	public class GameFactory : IGameFactory
 	{
+		public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
+		public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+
+
 		private readonly IAssets _assets;
 		private readonly IStaticDataService _staticData;
 		private readonly IRandomService _randomService;
@@ -25,8 +29,6 @@ namespace Game.Scripts.Infrastructure.Factories
 		private readonly IWindowsService _windowsService;
 		private readonly IGameStateMachine _stateMachine;
 
-		public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-		public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
 		private GameObject HeroGameObject { get; set; }
 
 		public GameFactory(IAssets assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IRandomService randomService,
@@ -133,10 +135,11 @@ namespace Game.Scripts.Infrastructure.Factories
 			GameObject saveTrigger = await InstantiatedRegisteredAsync(AssetAddress.SaveTriggerPath, at);
 		}
 
-		public async Task CreateLevelTransfer(Vector2 at)
+		public async Task CreateLevelTransfer(Vector2 at, string levelKey)
 		{
 			GameObject levelTransfer = await InstantiatedRegisteredAsync(AssetAddress.LevelTransferPath, at);
 			var transfer = levelTransfer.GetComponent<LevelTransfer>();
+			transfer.TransferTo = levelKey;
 			transfer.Construct(_stateMachine);
 		}
 

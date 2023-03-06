@@ -9,10 +9,10 @@ namespace Game.Scripts.Infrastructure.Services.StaticData
 {
 	public class StaticDataService : IStaticDataService
 	{
-		private const string StaticdataMonsters = "StaticData/Monsters";
-		private const string StaticdataLevels = "StaticData/Levels";
-		private const string StaticdataHero = "StaticData/Hero/Hero";
-		private const string StaticdataWindowconfig = "StaticData/UI/WindowStaticData";
+		private const string StaticDataMonsters = "StaticData/Monsters";
+		private const string StaticDataLevels = "StaticData/Levels";
+		private const string StaticDataHero = "StaticData/Hero/Hero";
+		private const string StaticDataWindowConfig = "StaticData/UI/WindowStaticData";
 
 		private Dictionary<GameObject, HeroStaticData> _hero;
 		private Dictionary<MonsterTypeId, MonsterStaticData> _monsters;
@@ -22,15 +22,15 @@ namespace Game.Scripts.Infrastructure.Services.StaticData
 		public void LoadMonsters()
 		{
 			_monsters = Resources
-				.LoadAll<MonsterStaticData>(StaticdataMonsters)
+				.LoadAll<MonsterStaticData>(StaticDataMonsters)
 				.ToDictionary(x => x.MonsterTypeId, x => x);
 			
 			_levels = Resources
-				.LoadAll<LevelStaticData>(StaticdataLevels)
+				.LoadAll<LevelStaticData>(StaticDataLevels)
 				.ToDictionary(x => x.LevelKey, x => x);
 			
 			_windowConfigs = Resources
-				.Load<WindowsStaticData>(StaticdataWindowconfig)
+				.Load<WindowsStaticData>(StaticDataWindowConfig)
 				.Configs
 				.ToDictionary(x => x.WindowId, x => x);
 		}

@@ -101,7 +101,7 @@ namespace Game.Scripts.Infrastructure.States
 
 		private async Task InitLevelTransfer(LevelStaticData levelData)
 		{
-			await _gameFactory.CreateLevelTransfer(levelData.LevelTransfers);
+			await _gameFactory.CreateLevelTransfer(levelData.LevelTransfers, levelData.LevelTransferKey);
 		}
 
 		private LevelStaticData LevelStaticData() =>

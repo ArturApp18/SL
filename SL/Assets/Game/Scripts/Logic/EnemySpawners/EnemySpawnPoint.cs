@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using Game.Scripts.Data;
 using Game.Scripts.Enemy;
 using Game.Scripts.Infrastructure.Factories;
@@ -16,11 +16,16 @@ namespace Game.Scripts.Logic.EnemySpawners
 		private bool _slain;
 		private IGameFactory _factory;
 		private EnemyDeath _enemyDeath;
-		public bool Slain => _slain;
 
 		public void Construct(IGameFactory factory)
 		{
 			_factory = factory;
+		}
+
+		private void OnDestroy()
+		{
+			if (_enemyDeath != null)
+				_enemyDeath.Happened -= Slay;
 		}
 
 		public void LoadProgress(PlayerProgress progress)
@@ -52,8 +57,10 @@ namespace Game.Scripts.Logic.EnemySpawners
 
 		public void UpdateProgress(PlayerProgress progress)
 		{
-			if (_slain)
-				progress.KillData.ClearedSpawners.Add(Id);
+			List<string> slainSpawnersList = progress.KillData.ClearedSpawners;
+
+			if (_slain && !slainSpawnersList.Contains(Id))
+				slainSpawnersList.Add(Id);
 		}
 	}
 

@@ -8,9 +8,9 @@ namespace Game.Scripts.Logic
 	{
 		private const string Player = "Player";
 		private IGameStateMachine _stateMachine;
-		public string TransferTo;
 
 		private bool _triggered;
+		public string TransferTo { get; set; }
 
 		public void Construct(IGameStateMachine stateMachine)
 		{
@@ -19,6 +19,10 @@ namespace Game.Scripts.Logic
 		
 		private void OnTriggerEnter2D(Collider2D col)
 		{
+			if (_triggered)
+			{
+				return;
+			}
 			if (col.CompareTag(Player))
 			{
 				_stateMachine.Enter<LoadLevelState, string>(TransferTo);

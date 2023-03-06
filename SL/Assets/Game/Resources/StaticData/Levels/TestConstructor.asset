@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: TestConstructor
   m_EditorClassIdentifier: 
   LevelKey: TestConstructor
+  LevelTransferKey: 
   EnemySpawners:
-  - Id: TestConstructor_c005c456-a5f3-4b2d-b0a2-ab86c4ab3405
-    MonsterTypeId: 10
-    Position: {x: 2.12, y: -5.74, z: 0}
-  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
+  - Id: TestLevel_e09f640d-a44a-4001-9fc8-74389a83a595
     MonsterTypeId: 0
-    Position: {x: -0.06, y: -5.44, z: 0}
-  InitialHeroPosition: {x: -8.5, y: -2.3}
+    Position: {x: 13.74, y: -3.59, z: 0.008027896}
+  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
+    MonsterTypeId: 10
+    Position: {x: 17.37, y: 2.13, z: 0.008027896}
+  - Id: TestLevel_28533570-1ffc-4bfb-8b1a-f3e2d2cefd36
+    MonsterTypeId: 0
+    Position: {x: -0.82, y: -2.14, z: 0.008027896}
+  - Id: TestLevel_254d632f-8f47-47ea-aa6a-72f8337053ce
+    MonsterTypeId: 0
+    Position: {x: 32.84, y: 1.98, z: 0.008027896}
+  - Id: TestLevel_3b34d08d-4513-4b02-8668-f7dbf5553135
+    MonsterTypeId: 0
+    Position: {x: 27.03, y: -3.64, z: 0.008027896}
+  InitialHeroPosition: {x: -7.68, y: -3.89}
   SaveTriggers: {x: 0, y: 0}
   LevelTransfers: {x: -100, y: -100}
