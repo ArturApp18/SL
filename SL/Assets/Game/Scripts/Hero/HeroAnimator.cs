@@ -24,6 +24,8 @@ namespace Game.Scripts.Hero
 		private static readonly int Landing = Animator.StringToHash("Landing");
 		private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
 		private static readonly int IsJumpAttack = Animator.StringToHash("IsJumpAttack");
+		private static readonly int CanClimb = Animator.StringToHash("CanClimb");
+		private static readonly int CanSlide = Animator.StringToHash("CanSlide");
 
 		private static readonly int IsReload = Animator.StringToHash("IsReload");
 		private readonly int _idleStateHash = Animator.StringToHash("Idle");
@@ -32,6 +34,8 @@ namespace Game.Scripts.Hero
 		private readonly int _walkingStateHash = Animator.StringToHash("Run");
 		private readonly int _deathStateHash = Animator.StringToHash("Death");
 		private readonly int _jumpStateHash = Animator.StringToHash("Jump");
+		private readonly int _ledgeClimbStateHash = Animator.StringToHash("Ledge");
+		private static readonly int IsCrouch = Animator.StringToHash("IsCrouch");
 
 
 		public event Action<AnimatorState> StateEntered;
@@ -71,6 +75,21 @@ namespace Game.Scripts.Hero
 			_animator.SetBool(IsRun, false);
 		}
 
+		public void StartWallSlide(bool isWallSliding)
+		{
+			_animator.SetBool(CanSlide, isWallSliding);
+		}
+
+		public void StartLedge(bool canClimb)
+		{
+			_animator.SetBool(CanClimb, canClimb);
+		}
+
+		public void StopLedge()
+		{
+			_animator.SetBool(CanClimb, false);
+		}
+
 		public void PlayHit()
 		{
 			_animator.SetTrigger(HitHash);
@@ -80,11 +99,21 @@ namespace Game.Scripts.Hero
 		{
 			_animator.SetBool(IsReload, true);
 		}
-		
+
 		public void StopReload()
 		{
 			_animator.SetBool(IsReload, false);
 		}
+
+		public void StartCrouch(bool isCrouching)
+		{
+			_animator.SetBool(IsCrouch, isCrouching);
+		}
+		public void StopCrouch()
+		{
+			_animator.SetBool(IsCrouch, false);
+		}
+
 		public void PlayJump()
 		{
 			_animator.SetBool(IsJump, true);
@@ -109,11 +138,12 @@ namespace Game.Scripts.Hero
 		{
 			_animator.SetTrigger(AttackHash1);
 		}
+
 		public void PlayAttack2()
 		{
 			_animator.SetTrigger(AttackHash2);
 		}
-		
+
 		public void PlayAttack3()
 		{
 			_animator.SetTrigger(AttackHash3);
@@ -158,6 +188,10 @@ namespace Game.Scripts.Hero
 			else if (stateHash == _jumpStateHash)
 			{
 				state = AnimatorState.Jumping;
+			}
+			else if (stateHash == _ledgeClimbStateHash)
+			{
+				state = AnimatorState.LedgeCLimb;
 			}
 			else
 			{

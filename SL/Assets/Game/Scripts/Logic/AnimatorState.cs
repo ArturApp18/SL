@@ -8,6 +8,7 @@ namespace Game.Scripts.Logic
 		Walking,
 		Jumping,
 		Falling,
+		LedgeCLimb,
 		Died,
 	}
 }

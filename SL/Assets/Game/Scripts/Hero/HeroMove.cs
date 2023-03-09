@@ -11,10 +11,9 @@ namespace Game.Scripts.Hero
 	public class HeroMove : MonoBehaviour, ISavedProgress
 	{
 		[SerializeField] private Rigidbody2D _rigidbody;
-		[SerializeField] private CharacterController2D _characterController;
-		[SerializeField] private HeroFlip heroFlip;
 		[SerializeField] private HeroAnimator _animator;
 
+		[SerializeField] private bool _canMove;
 		[SerializeField] private float _acceleration;
 		[SerializeField] private float _decceleration;
 		[SerializeField] private float _velocityPower;
@@ -26,6 +25,17 @@ namespace Game.Scripts.Hero
 		private bool _jump;
 		private bool _crouch = false;
 		private float _horizontalMove;
+		public bool CanMove
+		{
+			get
+			{
+				return _canMove;
+			}
+			set
+			{
+				_canMove = value;
+			}
+		}
 
 		public void Construct(IInputService input)
 		{
@@ -34,25 +44,31 @@ namespace Game.Scripts.Hero
 
 		private void Update()
 		{
-			_horizontalMove = _inputService.Axis.x;
-			if (_inputService.Axis.magnitude > 0.1)
+			if (_canMove)
 			{
-				_animator.StartRun();
-			}
-			else
-			{
-				_animator.StopRun();
+				_horizontalMove = _inputService.Axis.x;
+				if (_inputService.Axis.magnitude > 0.1)
+				{
+					_animator.StartRun();
+				}
+				else
+				{
+					_animator.StopRun();
+				}
 			}
 		}
 
 		private void FixedUpdate()
 		{
-			float targetSpeed = _horizontalMove * MovementSpeed;
-			float speedDif = targetSpeed - _rigidbody.velocity.x;
-			float accelRate = ( Mathf.Abs(MovementSpeed) > 0.01f ) ? _acceleration : _decceleration;
-			float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _velocityPower) * Mathf.Sign(speedDif);
-			_rigidbody.AddForce(movement * Vector2.right, ForceMode2D.Force);
+			if (_canMove)
+			{
+				float targetSpeed = _horizontalMove * MovementSpeed;
+				float speedDif = targetSpeed - _rigidbody.velocity.x;
+				float accelRate = ( Mathf.Abs(MovementSpeed) > 0.01f ) ? _acceleration : _decceleration;
+				float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _velocityPower) * Mathf.Sign(speedDif);
+				_rigidbody.AddForce(movement * Vector2.right, ForceMode2D.Force);
 
+			}
 		}
 
 		public void UpdateProgress(PlayerProgress progress) =>
@@ -76,7 +92,5 @@ namespace Game.Scripts.Hero
 			transform.position = to.AsUnityVector();
 		}
 	}
-
-	public class WallJump: MonoBehaviour{}
 
 }

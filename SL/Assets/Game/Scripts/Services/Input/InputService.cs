@@ -17,6 +17,7 @@ namespace Game.Scripts.Services.Input
         public abstract Vector2 Axis { get; }
         public abstract Vector2 AimAxis { get; }
 
+    
         public bool IsActionButton() =>
             SimpleInput.GetButton(Action);
         public bool IsAttackButton() =>
@@ -31,6 +32,7 @@ namespace Game.Scripts.Services.Input
         public bool IsJumpButtonUp() =>
             SimpleInput.GetButtonUp(Jump);
 
+        
         protected static Vector2 SimpleInputAxis() => 
             new Vector2(SimpleInput.GetAxis(Horizontal), SimpleInput.GetAxis(Vertical));
         

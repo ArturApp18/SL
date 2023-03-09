@@ -8,6 +8,10 @@ namespace Game.Scripts.Hero
 	public class HeroFlip : MonoBehaviour
 	{
 		[SerializeField] private bool _isFacingRight;
+		[SerializeField] private bool _canFlip;
+		[SerializeField] private float _facingDirection;
+		[SerializeField] private WallDetection _wallDetection;
+		[SerializeField] private CharacterController2D _controller;
 
 		private IInputService _inputService;
 
@@ -23,42 +27,77 @@ namespace Game.Scripts.Hero
 				return _isFacingRight;
 			}
 		}
+		public bool CanFlip
+		{
+			get
+			{
+				return _canFlip;
+			}
+			set
+			{
+				_canFlip = value;
+			}
+		}
+		public float FacingDirection
+		{
+			get
+			{
+				return _facingDirection;
+			}
+			set
+			{
+				_facingDirection = value;
+			}
+		}
 
 		private void Update()
 		{
-			if (_inputService.AimAxis.x == 0)
+			if (CanFlip)
 			{
-				if (_inputService.Axis.x > 0 && !IsFacingRight)
+				if (_inputService.AimAxis.x == 0)
 				{
-					Flip();
-					Debug.Log("1.5");
+					if (_inputService.Axis.x > 0 && !IsFacingRight)
+					{
+						Flip();
+						Debug.Log("1.5");
+					}
+					else if (_inputService.Axis.x < 0 && IsFacingRight)
+					{
+						Flip();
+						Debug.Log("1");
+					}
 				}
-				else if (_inputService.Axis.x < 0 && IsFacingRight)
+				else
 				{
-					Flip();
-					Debug.Log("1");
+					if (_inputService.AimAxis.x > 0 && !IsFacingRight)
+					{
+						Flip();
+						Debug.Log("1.5");
+					}
+					else if (_inputService.AimAxis.x < 0 && IsFacingRight)
+					{
+						Flip();
+						Debug.Log("1");
+					}
 				}
 			}
-			else
+			if (_controller.m_Grounded && _wallDetection.IsWallDetected)
 			{
-				if (_inputService.AimAxis.x > 0 && !IsFacingRight)
+				if (IsFacingRight && _inputService.Axis.x < 0)
 				{
 					Flip();
-					Debug.Log("1.5");
 				}
-				else if (_inputService.AimAxis.x < 0 && IsFacingRight)
+				else if(!IsFacingRight && _inputService.Axis.x > 0)
 				{
 					Flip();
-					Debug.Log("1");
 				}
 			}
 		}
 
 		public void Flip()
 		{
+			FacingDirection = FacingDirection * -1;
 			_isFacingRight = !_isFacingRight;
-
-            
 			transform.Rotate(0,180, 0);
 		}
 	}
