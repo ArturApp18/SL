@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7743510567529892192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 515871576740784006, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: _height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871576740784006, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: _wieght
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871576740784006, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: PlayerTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871576740784007, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 329c4f3c8191bf648ac95c5f511af625, type: 2}
+    - target: {fileID: 515871577779988907, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_Name
+      value: Bouncy Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515871577779988908, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 515871576740784006, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+--- !u!1 &7808898306083434211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 515871576740784003, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+  m_PrefabInstance: {fileID: 7743510567529892192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &139739256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808898306083434211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65122deb1beb444baedd574be209cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionObserver: {fileID: 8176767758869891047}
+  _bounce: 5
+--- !u!114 &8176767758869891047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1877947313940647559, guid: d44380c3d046e4447b3069f32dbb38d7, type: 3}
+  m_PrefabInstance: {fileID: 7743510567529892192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808898306083434211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5dad7ccd3b433b85975ff12bd83697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

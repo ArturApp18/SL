@@ -6,7 +6,7 @@ namespace Game.Scripts.Infrastructure.States
 {
 	public class LoadProgressState : IState
 	{
-		private const string InitialLevel = "TestLevel";
+		private const string InitialLevel = "Vanya";
 		private readonly GameStateMachine _gameStateMachine;
 		private readonly IPersistentProgressService _progressService;
 		private readonly ISaveLoadService _saveLoadService;

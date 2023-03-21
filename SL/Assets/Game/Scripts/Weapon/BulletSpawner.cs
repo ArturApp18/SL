@@ -1,4 +1,3 @@
-using Game.Scripts.Enemy;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Services.Input;
 using UnityEngine;
@@ -8,7 +7,6 @@ namespace Game.Scripts.Weapon
 {
 	public class BulletSpawner : MonoBehaviour
 	{
-		[SerializeField] private TriggerObserver _triggerObserver;
 		[SerializeField] private Bullet _bullet;
 		[SerializeField] private Transform _spawnArea;
 		[SerializeField] private RecoilWeapon _recoilWeapon;

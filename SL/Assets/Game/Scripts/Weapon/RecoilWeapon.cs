@@ -64,8 +64,7 @@ namespace Game.Scripts.Weapon
 
 		private Vector3 OriginalPosition()
 		{
-			float recoilDirection = _heroFlip.IsFacingRight ? 1f : -1f;
-			return _originalPosition - transform.right * (recoilDirection * _recoilDistance);
+			return _originalPosition - transform.right * (_heroFlip.FacingDirection * _recoilDistance);
 		}
 	}
 }

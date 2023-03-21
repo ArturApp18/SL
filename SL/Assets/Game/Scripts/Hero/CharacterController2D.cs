@@ -28,16 +28,11 @@ namespace Game.Scripts.Hero
 		public float k_GroundedRadius = 0.2f; // Radius of the overlap circle to determine if grounded
 		public float k_WallCheckRayDistance = 0.2f; // Radius of the overlap circle to determine if grounded
 		public bool m_Grounded; // Whether or not the player is grounded.
-		public bool m_WallDetected; // Whether or not the player is grounded.
-		public bool m_LedgeDetected; // Whether or not the player is grounded.
 		public float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 
 		private bool m_wasCrouching = false;
-		[SerializeField] private bool _isTouchingWall;
 
 		[SerializeField] private Rigidbody2D rigidbody2D;
-		
-		private IInputService _input;
 
 		public Transform MGroundCheck
 		{
@@ -82,7 +77,7 @@ namespace Game.Scripts.Hero
 
 		private void Awake()
 		{
-			_input = AllServices.Container.Single<IInputService>();
+			AllServices.Container.Single<IInputService>();
 			GetComponent<Rigidbody2D>();
 
 			if (OnLandEvent == null)
@@ -168,12 +163,12 @@ namespace Game.Scripts.Hero
 			}
 		}
 
-		private void OnDrawGizmos()
+		/*private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.blue;
 			Gizmos.DrawSphere(MGroundCheck.position, k_GroundedRadius);
 			Gizmos.DrawSphere(m_CeilingCheck.position, k_CeilingRadius);
-		}
+		}*/
 	}
 
 }

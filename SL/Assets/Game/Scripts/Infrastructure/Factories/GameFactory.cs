@@ -67,7 +67,7 @@ namespace Game.Scripts.Infrastructure.Factories
 
 			_heroGameObject.GetComponent<HeroAim>().Construct(_inputService);
 
-			_heroGameObject.GetComponent<HeroAttack>().Construct(_inputService);
+			_heroGameObject.GetComponentInChildren<HeroAttack>().Construct(_inputService);
 
 			_heroGameObject.GetComponent<HeroFlip>().Construct(_inputService);
 			
@@ -89,7 +89,7 @@ namespace Game.Scripts.Infrastructure.Factories
 
 			return hud;
 		}
-
+		
 		public async Task<LootPiece> CreateLoot()
 		{
 			GameObject prefab = await _assets.Load<GameObject>(AssetAddress.Loot);

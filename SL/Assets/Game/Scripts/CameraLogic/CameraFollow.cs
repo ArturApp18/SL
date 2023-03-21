@@ -20,9 +20,12 @@ namespace Game.Scripts.CameraLogic
 		public void Follow(GameObject following)
 		{
 			VirtualCamera.Follow = following.transform;
-			foreach (ParallaxLayer parallaxLayer in _parallaxLayers)
+			if (_parallaxLayers != null)
 			{
-				parallaxLayer.FollowParallax(following.transform);
+				foreach (ParallaxLayer parallaxLayer in _parallaxLayers)
+				{
+					parallaxLayer.FollowParallax(following.transform);
+				}
 			}
 		}
 

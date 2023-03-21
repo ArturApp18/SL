@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 199945987
+    locked: 0
+  - name: 'HeroPathBack '
+    uniqueID: 3959265183
+    locked: 0
+  - name: Player Ground
+    uniqueID: 2034667475
+    locked: 0
+  - name: Foreground
+    uniqueID: 1959518365
+    locked: 0

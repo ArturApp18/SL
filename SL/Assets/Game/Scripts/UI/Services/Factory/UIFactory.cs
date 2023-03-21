@@ -3,6 +3,7 @@ using Game.Scripts.Infrastructure.AssetManagement;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
 using Game.Scripts.Infrastructure.Services.StaticData;
 using Game.Scripts.StaticData.Windows;
+using Game.Scripts.UI.Services.Window;
 using Game.Scripts.UI.Windows;
 using UnityEngine;
 

@@ -8,6 +8,7 @@ namespace Game.Scripts.Hero
 		[SerializeField] private float _wallCheckDistance;
 		[SerializeField] private CharacterController2D _controller;
 		public bool IsWallDetected;
+
 		private void Update()
 		{
 			IsWallDetected = Physics2D.Raycast(_wallCheck.position, transform.right, _wallCheckDistance, _controller.MWhatIsWall);

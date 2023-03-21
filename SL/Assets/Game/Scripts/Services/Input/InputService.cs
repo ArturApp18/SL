@@ -12,7 +12,7 @@ namespace Game.Scripts.Services.Input
         
         private const string Attack = "Fire";
         private const string Jump = "Jump";
-        private const string Action = "Fire3";
+        private const string Action = "Action";
 
         public abstract Vector2 Axis { get; }
         public abstract Vector2 AimAxis { get; }
@@ -20,8 +20,15 @@ namespace Game.Scripts.Services.Input
     
         public bool IsActionButton() =>
             SimpleInput.GetButton(Action);
+
+        public bool IsActionButtonDown() =>
+            SimpleInput.GetButtonDown(Action);
+
         public bool IsAttackButton() =>
             SimpleInput.GetButton(Attack);
+
+        public bool IsAttackButtonDown() =>
+            SimpleInput.GetButtonDown(Attack);
 
         public bool IsJumpButton() =>
             SimpleInput.GetButton(Jump);

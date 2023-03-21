@@ -14,11 +14,9 @@ namespace Game.Scripts.Hero
 		[SerializeField] private HeroAnimator _animator;
 		[SerializeField] private HeroMove _heroMove;
 		[SerializeField] private HeroFlip _heroFlip;
+		
 		private IInputService _input;
 
-
-		public bool WallSliding;
-		public float WallSlidingSpeed;
 		public bool IsWallSliding
 		{
 			get
@@ -53,8 +51,6 @@ namespace Game.Scripts.Hero
 			{
 				CanWallSlide = true;
 			}
-
-			
 		}
 
 		private void FixedUpdate()
@@ -63,10 +59,11 @@ namespace Game.Scripts.Hero
 			{
 				_canWallSlide = false;
 			}
-			if (_wallDetection.IsWallDetected && CanWallSlide)
+			if (_wallDetection.IsWallDetected && CanWallSlide && !_controller.m_Grounded)
 			{
 				IsWallSliding = true;
 				_heroFlip.CanFlip = false;
+				_heroMove.CanMove = false;
 				_animator.StartWallSlide(IsWallSliding);
 				_rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * 0.1f);
 				Debug.Log("hello");
@@ -74,8 +71,6 @@ namespace Game.Scripts.Hero
 			else if (!_wallDetection.IsWallDetected)
 			{
 				IsWallSliding = false;
-				_heroMove.CanMove = true;
-				_heroFlip.CanFlip = true;
 				_animator.StartWallSlide(IsWallSliding);
 				Debug.Log("hell000000000o");
 			}

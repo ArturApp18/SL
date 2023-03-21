@@ -108,6 +108,7 @@ namespace Game.Scripts.Hero
 		{
 			_heroMove.CanMove = true;
 			_heroFlip.CanFlip = true;
+
 			_wallSlide.IsWallSliding = false;
 			Animator.StopJump();
 			Animator.StartWallSlide(false);

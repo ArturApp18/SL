@@ -1,5 +1,7 @@
 using System;
+using Game.Scripts.Enemy;
 using Game.Scripts.Infrastructure.Services;
+using Game.Scripts.Logic;
 using Game.Scripts.Services.Input;
 using UnityEngine;
 
@@ -7,56 +9,66 @@ namespace Game.Scripts.PlatformLogic
 {
 	public class TransformingPlatform : MonoBehaviour
 	{
-		private static readonly int Transform = Animator.StringToHash("Transform");
-
+		[SerializeField] private TriggerObserver _triggerObserver;
+		[SerializeField] private bool _inActiveZone;
+		[SerializeField] private GameObject _platform;
 		[SerializeField] private Animator _animator;
-		[SerializeField] private float _trasnformationProgress;
-		[SerializeField] private float _scale;
-		[SerializeField] private bool _startTransforming;
-
-		private IInputService _inputService;
+		private IInputService _input;
+		private static readonly int Up = Animator.StringToHash("Up");
+		private static readonly int Down = Animator.StringToHash("Down");
+		public bool _closedDoor;
+		public bool _isAnimating;
 
 		private void Awake()
 		{
-			_inputService = AllServices.Container.Single<IInputService>();
+			_input = AllServices.Container.Single<IInputService>();
 		}
 
 		private void Start()
 		{
-			_animator.SetFloat(Transform, _trasnformationProgress);
+			_triggerObserver.TriggerEnter += TriggerEnter;
+			_triggerObserver.TriggerExit += TriggerExit;
+		}
+
+		private void OnDestroy()
+		{
+			_triggerObserver.TriggerEnter -= TriggerEnter;
+			_triggerObserver.TriggerExit -= TriggerExit;
 		}
 
 		private void Update()
 		{
-			if (_inputService.IsActionButton())
+			if (_inActiveZone)
 			{
-				_startTransforming = true;
-			}
-			else
-			{
-				_startTransforming = false;
+				if (_input.IsActionButtonDown() && _closedDoor && !_isAnimating)
+				{
+					_isAnimating = true;
+					Debug.Log("qwerty");
+					_closedDoor = false;
+					_animator.SetTrigger(Up);
+				}
+				else if(_input.IsActionButtonDown() && !_closedDoor && !_isAnimating)
+				{
+					_isAnimating = true;
+					_animator.SetTrigger(Down);
+					_closedDoor = true;
+				}
 			}
 		}
 
-		private void FixedUpdate()
+		public void OnAnimationEnded()
 		{
-			if (_startTransforming)
-			{
-				Transformation(_scale);
-			}
-			else
-			{
-				Transformation(-_scale);
-			}
+			_isAnimating = false;
 		}
-
-		private void Transformation(float scale)
+		private void TriggerEnter(Collider2D obj)
 		{
-			_trasnformationProgress = Math.Clamp(_trasnformationProgress + Time.deltaTime * scale, -1, 5); 
-			_animator.SetFloat(Transform, _trasnformationProgress);
+			_inActiveZone = true;
 		}
 
-		private bool BorderCheck() =>
-			_trasnformationProgress < 1.1 && -1.1 < _trasnformationProgress;
+		private void TriggerExit(Collider2D obj)
+		{
+			_inActiveZone = false;
+		}
 	}
+
 }

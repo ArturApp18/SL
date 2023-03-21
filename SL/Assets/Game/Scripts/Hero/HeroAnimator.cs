@@ -26,6 +26,7 @@ namespace Game.Scripts.Hero
 		private static readonly int IsJumpAttack = Animator.StringToHash("IsJumpAttack");
 		private static readonly int CanClimb = Animator.StringToHash("CanClimb");
 		private static readonly int CanSlide = Animator.StringToHash("CanSlide");
+		private static readonly int Dashing = Animator.StringToHash("IsDashing");
 
 		private static readonly int IsReload = Animator.StringToHash("IsReload");
 		private readonly int _idleStateHash = Animator.StringToHash("Idle");
@@ -139,21 +140,30 @@ namespace Game.Scripts.Hero
 			_animator.SetTrigger(AttackHash1);
 		}
 
-		public void PlayAttack2()
+		public void PlayComboAttack()
 		{
-			_animator.SetTrigger(AttackHash2);
+			_animator.Play("RobotAttack1");
 		}
 
-		public void PlayAttack3()
+		public void PlayComboAttack2()
 		{
-			_animator.SetTrigger(AttackHash3);
+			_animator.Play("RobotAttack2");
 		}
 
+		public void PlayComboAttack3()
+		{
+			_animator.Play("RobotAttack3");
+		}
 		public void PlayDeath()
 		{
 			_animator.SetTrigger(DieHash);
 		}
 
+
+		public void IsDashing(bool isDashing)
+		{
+			_animator.SetBool(Dashing, isDashing);
+		}
 
 		public void EnteredState(int stateHash)
 		{

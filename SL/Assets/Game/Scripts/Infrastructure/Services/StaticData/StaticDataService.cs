@@ -3,6 +3,7 @@ using System.Linq;
 using Game.Scripts.StaticData;
 using Game.Scripts.StaticData.Windows;
 using Game.Scripts.UI.Services;
+using Game.Scripts.UI.Services.Window;
 using UnityEngine;
 
 namespace Game.Scripts.Infrastructure.Services.StaticData

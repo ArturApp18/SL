@@ -1,4 +1,4 @@
-namespace Game.Scripts.UI.Services
+namespace Game.Scripts.UI.Services.Window
 {
 	public enum WindowId
 	{

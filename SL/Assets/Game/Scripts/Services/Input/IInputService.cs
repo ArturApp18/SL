@@ -9,7 +9,9 @@ namespace Game.Scripts.Services.Input
         Vector2 AimAxis { get; }
         
         bool IsActionButton();
+        bool IsActionButtonDown();
         bool IsAttackButton();
+        bool IsAttackButtonDown();
         bool IsJumpButtonDown();
         bool IsJumpButton();
         bool IsJumpButtonUp();

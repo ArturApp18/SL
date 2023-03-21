@@ -84,6 +84,7 @@ namespace Game.Scripts.Infrastructure.States
 		{
 			GameObject hud = await _gameFactory.CreateHud();
 			hud.GetComponentInChildren<ActorUI>().Construct(hero.GetComponent<HeroHealth>());
+			hero.GetComponentInChildren<InteractionTrigger>().Construct(hud.GetComponentInChildren<PopUpActionButton>());
 		}
 
 		private async Task InitSpawners(LevelStaticData levelData)

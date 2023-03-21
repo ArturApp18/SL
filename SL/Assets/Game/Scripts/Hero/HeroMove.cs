@@ -47,7 +47,7 @@ namespace Game.Scripts.Hero
 			if (_canMove)
 			{
 				_horizontalMove = _inputService.Axis.x;
-				if (_inputService.Axis.magnitude > 0.1)
+				if (_inputService.Axis.x > 0.1 || _inputService.Axis.x < -0.1)
 				{
 					_animator.StartRun();
 				}

@@ -96,6 +96,7 @@ namespace Game.Scripts.Hero
 
 		public void Flip()
 		{
+			Debug.Log("Flip");
 			FacingDirection = FacingDirection * -1;
 			_isFacingRight = !_isFacingRight;
 			transform.Rotate(0,180, 0);

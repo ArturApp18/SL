@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Main
   m_EditorClassIdentifier: 
   LevelKey: Main
-  LevelTransferKey: TestLevel
+  LevelTransferKey: Visual
   EnemySpawners:
   - Id: Main_a259a27b-0c15-49e5-ba0c-0d08731ef0ae
     MonsterTypeId: 0
