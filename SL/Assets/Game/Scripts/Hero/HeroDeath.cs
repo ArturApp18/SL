@@ -1,6 +1,3 @@
-using System;
-using Game.Scripts.Data;
-using Game.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 
 namespace Game.Scripts.Hero

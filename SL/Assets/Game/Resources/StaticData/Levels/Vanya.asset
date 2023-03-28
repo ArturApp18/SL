@@ -14,34 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: Vanya
   LevelTransferKey: TestLevel
-  EnemySpawners:
-  - Id: Vanya_c50b9966-4d4a-4d7d-8e78-f056de57413f
-    MonsterTypeId: 0
-    Position: {x: 22.01, y: -2.33, z: 0.008027896}
-  - Id: Vanya_fbcadea8-1766-4ed3-a585-6edcd24e29e3
-    MonsterTypeId: 10
-    Position: {x: 137.37, y: -16.79, z: 0.008027896}
-  - Id: Vanya_ab732e0c-05d6-4659-9d01-cfeb3c3723c4
-    MonsterTypeId: 10
-    Position: {x: 97.81, y: -12.85, z: 0.008027896}
-  - Id: Vanya_fe60b49a-7609-421e-bac7-855cca4c9d8d
-    MonsterTypeId: 10
-    Position: {x: 6.56, y: 11.21, z: 0.008027896}
-  - Id: Vanya_fbacafef-35af-48ae-a652-fa7b3a08e9be
-    MonsterTypeId: 10
-    Position: {x: 56.55, y: 8.37, z: 0.008027896}
-  - Id: Vanya_18fcef1f-a07a-4a9d-9ae4-774251178890
-    MonsterTypeId: 10
-    Position: {x: 32.59, y: 8.43, z: 0.008027896}
-  - Id: Vanya_c2f3c099-02fa-420c-a766-5bcb25b75064
-    MonsterTypeId: 0
-    Position: {x: 35.97, y: 8.43, z: 0.008027896}
-  - Id: Vanya_44d0babc-81c5-43c8-ae6a-991578949c4e
-    MonsterTypeId: 0
-    Position: {x: 35, y: 8.43, z: 0.008027896}
-  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
-    MonsterTypeId: 0
-    Position: {x: 2.86, y: -6.65, z: 0.008027896}
-  InitialHeroPosition: {x: -15.79, y: -1.71}
+  EnemySpawners: []
+  InitialHeroPosition: {x: -0.23463249, y: 16.303148}
   SaveTriggers: {x: 100, y: 0}
   LevelTransfers: {x: 100, y: 0}

@@ -21,7 +21,7 @@ namespace Game.Scripts.PlatformLogic
 			float progressY = CalculateAxisAnimation(_duration);
 			float progressX = CalculateAxisAnimation(_duration);
 
-			_rigidBody.MovePosition(new Vector2(_xAnimation.Evaluate(progressX) * _wieght, _yAnimation.Evaluate(progressY) * _height));
+			transform.localPosition = (new Vector2(_xAnimation.Evaluate(progressX) * _wieght, _yAnimation.Evaluate(progressY) * _height));
 		}
 
 		private float CalculateAxisAnimation(float duration)

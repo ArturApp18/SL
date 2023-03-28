@@ -32,19 +32,19 @@ namespace Game.Scripts.Hero
 			PlayerTransform.TriggerExit -= TriggerExit;
 		}
 
-		private void Update()
-		{
-			if (_isOnPlatform)
+		private void FixedUpdate()
+		{ 
+			/*if (_isOnPlatform)
 			{
 				Vector3 deltaPosition = platformBody.position - _lastPlatformPosition;
 				_rigidBody.position += deltaPosition;
 				_lastPlatformPosition = platformBody.position;
-			}
+			}*/
 		}
 
 		private void TriggerEnter(Collider2D obj)
 		{
-			platformBody = obj.gameObject.transform;
+			_rigidBody.parent = obj.gameObject.transform;
 			_lastPlatformPosition = platformBody.position;
 			Debug.Log("velocity" + platformBody.transform);
 			_isOnPlatform = true;
@@ -52,6 +52,7 @@ namespace Game.Scripts.Hero
 
 		private void TriggerExit(Collider2D obj)
 		{
+			_rigidBody.parent = null;
 			_isOnPlatform = false;
 			platformBody = null;
 		}

@@ -1,4 +1,5 @@
 using Game.Scripts.Data;
+using Game.Scripts.Enemy;
 using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Infrastructure.Services.PersistentProgress;
 using Game.Scripts.Logic;
@@ -53,6 +54,7 @@ namespace Game.Scripts.Hero
 			for (int i = 0; i < Hit(); i++)
 			{
 				_hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Stats.Damage);
+				_hits[i].transform.parent.GetComponent<EnemyHealth>().KnockBack(transform);
 			}
 		}
 
