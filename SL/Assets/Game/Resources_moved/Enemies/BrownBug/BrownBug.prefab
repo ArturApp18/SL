@@ -127,6 +127,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Mob
       objectReference: {fileID: 0}
+    - target: {fileID: 1893898928430433324, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6869758
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893898928430433324, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: m_Size.y
+      value: 0.21424554
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893898928430433324, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0095823705
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893898928430433324, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.124570824
+      objectReference: {fileID: 0}
     - target: {fileID: 3951585990022702776, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -187,9 +203,13 @@ PrefabInstance:
       propertyPath: knockBackForceUp
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4630233882634502953, guid: 669d5622850618848b18e3cb010c8970, type: 3}
+      propertyPath: m_Layer
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 8990813093536887562, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8990813093536887562, guid: 669d5622850618848b18e3cb010c8970, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts.Infrastructure.Factories;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace Game.Scripts.Enemy
 	public class AgentMoveToHero : Follow
 	{
 		private const float MinimalDistance = 0.7f;
-		
+
+		[SerializeField] private RotateToHero _rotateToHero;
 		private Transform _heroTransform;
 		private IGameFactory _gameFactory;
 
@@ -35,12 +37,18 @@ namespace Game.Scripts.Enemy
 			{
 				Rigidbody.velocity = new Vector2(MovementSpeed, Rigidbody.velocity.y);
 
-				transform.localScale = new Vector2(-1, 1);
+				if (!_rotateToHero.IsFacingRight)
+				{
+					_rotateToHero.Flip();
+				}
 			}
 			else
 			{
 				Rigidbody.velocity = new Vector2(-MovementSpeed, Rigidbody.velocity.y);
-				transform.localScale = new Vector2(1, 1);
+				if (_rotateToHero.IsFacingRight)
+				{
+					_rotateToHero.Flip();
+				}
 			}
 		}
 
@@ -55,4 +63,5 @@ namespace Game.Scripts.Enemy
 			Vector3.Distance(transform.position, _heroTransform.position) >= MinimalDistance;
 
 	}
+
 }

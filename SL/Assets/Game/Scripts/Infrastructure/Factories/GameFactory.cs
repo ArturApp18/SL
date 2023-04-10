@@ -117,6 +117,7 @@ namespace Game.Scripts.Infrastructure.Factories
 
 			monster.GetComponent<AgentMoveToHero>().Construct(_heroGameObject.transform);
 			monster.GetComponent<AgentMoveToHero>().MovementSpeed = monsterData.MoveSpeed;
+			monster.GetComponent<RotateToHero>().Construct(_heroGameObject.transform);
 
 
 			LootSpawner lootSpawner = monster.GetComponentInChildren<LootSpawner>();

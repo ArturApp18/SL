@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Game.Scripts.Logic
 {
@@ -8,5 +9,6 @@ namespace Game.Scripts.Logic
 		float Current { get; set; }
 		float Max { get; set; }
 		void TakeDamage(float damage);
+		void KnockBack(Transform hero);
 	}
 }

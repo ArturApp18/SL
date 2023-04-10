@@ -54,6 +54,9 @@ namespace Game.Scripts.Infrastructure.States
 			_stateMachine.Enter<GameLoopState>();
 		}
 
+		private async Task<GameObject> InitHero(LevelStaticData levelData) =>
+			await _gameFactory.CreateHero(levelData.InitialHeroPosition);
+
 		private async Task InitUIRoot() =>
 			await _uiFactory.CreateUIRoot();
 
@@ -67,18 +70,15 @@ namespace Game.Scripts.Infrastructure.States
 		{
 			LevelStaticData levelData = LevelStaticData();
 
+			GameObject hero = await  InitHero(levelData);
 			await InitSpawners(levelData);
 			await InitSaveTriggers(levelData);
 			await InitLevelTransfer(levelData);
-			GameObject hero = await  InitHero(levelData);
 
 			await InitHud(hero);
 
 			CameraFollow(hero);
 		}
-
-		private async Task<GameObject> InitHero(LevelStaticData levelData) =>
-			await _gameFactory.CreateHero(levelData.InitialHeroPosition);
 
 		private async Task InitHud(GameObject hero)
 		{

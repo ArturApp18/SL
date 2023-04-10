@@ -64,8 +64,6 @@ namespace Game.Scripts.Weapon
 			_trailRenderer.enabled = true;
 
 			_rigidbody2D.velocity = direction * speed;
-			
-			
 		}
 
 		private void TriggerEnter(Collider2D obj)

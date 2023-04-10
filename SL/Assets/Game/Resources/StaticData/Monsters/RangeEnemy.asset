@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece39ea3320d4d208b17e56699211cf5, type: 3}
+  m_Name: RangeEnemy
+  m_EditorClassIdentifier: 
+  MonsterTypeId: 20
+  Hp: 45
+  Damage: 2.6
+  MoveSpeed: 0
+  EffectiveDistance: 0.674
+  Cleavage: 0.697
+  MaxLoot: 10
+  MinLoot: 50
+  PrefabReference:
+    m_AssetGUID: 7568c5148952d61488ef49c3c099124b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

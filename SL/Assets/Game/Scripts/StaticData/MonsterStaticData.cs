@@ -14,7 +14,7 @@ namespace Game.Scripts.StaticData
 		public float Damage;
 
 
-		[Range(1f, 15f)]
+		[Range(0f, 15f)]
 		public float MoveSpeed;
 
 

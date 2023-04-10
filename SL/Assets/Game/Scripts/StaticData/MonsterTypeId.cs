@@ -4,5 +4,7 @@ namespace Game.Scripts.StaticData
 	{
 		BrownBug = 0,
 		WildFlower = 10,
+		RangeAttack = 20,
+		RangeAttackAoe = 30,
 	}
 }

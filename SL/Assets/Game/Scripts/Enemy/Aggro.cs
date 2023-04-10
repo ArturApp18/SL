@@ -7,7 +7,7 @@ namespace Game.Scripts.Enemy
 	{
 		public TriggerObserver TriggerObserver;
 		public Follow Follow;
-
+		public EnemyDeath EnemyDeath;
 		public float Cooldown;
 		private Coroutine _aggroCoroutine;
 		private bool _hasAggroTarget;
@@ -22,7 +22,7 @@ namespace Game.Scripts.Enemy
 
 		private void TriggerEnter(Collider2D obj)
 		{
-			if (!_hasAggroTarget)
+			if (!_hasAggroTarget && !EnemyDeath.IsDeath)
 			{
 				_hasAggroTarget = true;
 				

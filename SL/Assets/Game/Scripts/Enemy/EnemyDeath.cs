@@ -12,7 +12,8 @@ namespace Game.Scripts.Enemy
 		public Aggro Aggro;
 		public EnemyAnimator Animator;
 		public Collider2D HurtBox;
-
+		public bool IsDeath = false;
+		
 		public GameObject DeathFx;
 
 		public event Action Happened;
@@ -35,10 +36,11 @@ namespace Game.Scripts.Enemy
 
 		private void Die()
 		{
+			IsDeath = true;
 			Health.HealthChanged -= HealthChanged;
 			
-			Follow.enabled = false;
 			Aggro.enabled = false;
+			Follow.enabled = false;
 			
 			Animator.PlayDeath();
 

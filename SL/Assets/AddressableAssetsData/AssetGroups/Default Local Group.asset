@@ -53,6 +53,14 @@ MonoBehaviour:
     m_Address: UIRoot
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7568c5148952d61488ef49c3c099124b
+    m_Address: Assets/Game/Resources_moved/Enemies/RangeEnemy/RangeEnemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0e7d5186a96db449b88731d438c96fa
+    m_Address: Assets/Game/Resources_moved/Enemies/RangeEnemy/RangeEnemy AOE.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 256aca00ecc9bfe4cb161373805a1ea3, type: 2}
   m_SchemaSet:

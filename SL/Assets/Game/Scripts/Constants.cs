@@ -5,3 +5,4 @@ namespace Game.Scripts
         public const float Epsilon = 0.001f;
     }
 }
+

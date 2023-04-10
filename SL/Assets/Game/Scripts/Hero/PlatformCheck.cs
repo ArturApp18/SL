@@ -11,7 +11,6 @@ namespace Game.Scripts.Hero
 		[SerializeField] private TriggerObserver PlayerTransform;
 		[SerializeField] private Transform platformBody;
 		[SerializeField] private Transform _rigidBody;
-		[SerializeField] private Vector3 _lastPlatformPosition;
 		public bool _isOnPlatform;
 		private IInputService _input;
 
@@ -45,8 +44,6 @@ namespace Game.Scripts.Hero
 		private void TriggerEnter(Collider2D obj)
 		{
 			_rigidBody.parent = obj.gameObject.transform;
-			_lastPlatformPosition = platformBody.position;
-			Debug.Log("velocity" + platformBody.transform);
 			_isOnPlatform = true;
 		}
 
@@ -54,7 +51,6 @@ namespace Game.Scripts.Hero
 		{
 			_rigidBody.parent = null;
 			_isOnPlatform = false;
-			platformBody = null;
 		}
 	}
 

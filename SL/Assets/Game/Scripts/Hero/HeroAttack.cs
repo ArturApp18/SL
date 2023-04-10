@@ -18,6 +18,7 @@ namespace Game.Scripts.Hero
 		private static int _layerMask;
 		private Collider2D[] _hits = new Collider2D[3];
 		private Stats _stats;
+		
 		public Stats Stats
 		{
 			get
@@ -38,8 +39,6 @@ namespace Game.Scripts.Hero
 		
 		private void Awake()
 		{
-			
-
 			_layerMask = 1 << LayerMask.NameToLayer("Hittable");
 		}
 
@@ -54,7 +53,7 @@ namespace Game.Scripts.Hero
 			for (int i = 0; i < Hit(); i++)
 			{
 				_hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Stats.Damage);
-				_hits[i].transform.parent.GetComponent<EnemyHealth>().KnockBack(transform);
+				_hits[i].transform.parent.GetComponent<IHealth>().KnockBack(transform);
 			}
 		}
 

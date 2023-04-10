@@ -7,37 +7,35 @@ namespace Game.Scripts.Enemy
 {
 	public class RotateToHero : Follow
 	{
-		public float Speed;
+		[SerializeField] private bool _isFacingRight;
+		[SerializeField] private bool _entered;
+
 
 		private Transform _heroTransform;
 		private IGameFactory _gameFactory;
-		private Vector3 _positionToLook;
+
+		public float FacingDirection { get; set; }
+		public bool IsFacingRight
+		{
+			get
+			{
+				return _isFacingRight;
+			}
+			set
+			{
+				_isFacingRight = value;
+			}
+		}
 
 		public void Construct(Transform heroTransform) =>
 			_heroTransform = heroTransform;
 		
-
-		private void RotateTowardsHero()
+		public void Flip()
 		{
-			UpdatePositionToLookAt();
-
-			transform.rotation = SmoothedRotation(transform.rotation, _positionToLook);
+			FacingDirection = FacingDirection * -1;
+			IsFacingRight = !IsFacingRight;
+			transform.Rotate(0, 180, 0);
 		}
-
-		private void UpdatePositionToLookAt()
-		{
-			Vector3 positionDiff = _heroTransform.position - transform.position;
-			positionDiff = new Vector3(positionDiff.x, transform.position.y, positionDiff.y);
-		}
-
-		private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook) =>
-			Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());
-
-		private Quaternion TargetRotation(Vector3 position) =>
-			Quaternion.LookRotation(position);
-
-		private float SpeedFactor() =>
-			Speed * Time.deltaTime;
 
 	}
 
