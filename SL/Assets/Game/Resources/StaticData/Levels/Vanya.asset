@@ -14,7 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: Vanya
   LevelTransferKey: TestLevel
+<<<<<<< Updated upstream
   EnemySpawners: []
   InitialHeroPosition: {x: 2.74, y: 11.47}
+=======
+  EnemySpawners:
+  - Id: Vanya_83aa8c1e-ddcb-45c4-9ade-19e208aa96d5
+    MonsterTypeId: 0
+    Position: {x: -113.37, y: 14.86, z: 0.008027896}
+  - Id: Vanya_e5b98497-c615-457d-a86a-d7dc372dfd44
+    MonsterTypeId: 0
+    Position: {x: -145.63, y: 14.79, z: 0.008027896}
+  - Id: Vanya_107b2b79-1c4f-4913-a520-77a6fcf4742a
+    MonsterTypeId: 0
+    Position: {x: -156.49, y: 14.64, z: 0.008027896}
+  - Id: Vanya_d3666654-14e5-4c50-b21f-0bf97cfd6e9c
+    MonsterTypeId: 0
+    Position: {x: -131.72, y: 14.66, z: 0.008027896}
+  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
+    MonsterTypeId: 0
+    Position: {x: 11.824114, y: 24.39074, z: 0.008027896}
+  - Id: Vanya_860d3b65-2d3b-4758-9bee-1f8051cdba03
+    MonsterTypeId: 0
+    Position: {x: 20.75, y: 24.45, z: 0.008027896}
+  - Id: Vanya_dea7d419-dddc-4493-982a-e4e83bd6d3b6
+    MonsterTypeId: 0
+    Position: {x: 16.32, y: 24.39074, z: 0.008027896}
+  InitialHeroPosition: {x: -168.23, y: 14.47}
+>>>>>>> Stashed changes
   SaveTriggers: {x: 100, y: 0}
   LevelTransfers: {x: 100, y: 0}
