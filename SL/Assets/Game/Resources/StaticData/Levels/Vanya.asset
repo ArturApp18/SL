@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vanya
   m_EditorClassIdentifier: 
   LevelKey: Vanya
-  LevelTransferKey: TestLevel
+  LevelTransferKey: Vanya
   EnemySpawners:
   - Id: Vanya_d34e3cda-f89f-4a45-bdce-b755ee747173
     MonsterTypeId: 30
@@ -31,5 +31,5 @@ MonoBehaviour:
     MonsterTypeId: 20
     Position: {x: 17.83, y: 22.22, z: 0.008027896}
   InitialHeroPosition: {x: 12.2, y: 23.1}
-  SaveTriggers: {x: 100, y: 0}
-  LevelTransfers: {x: 100, y: 0}
+  SaveTriggers: {x: -16.810165, y: 33.92911}
+  LevelTransfers: {x: 12.698717, y: 9.910514}

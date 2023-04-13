@@ -6063,6 +6063,7 @@ MonoBehaviour:
   Move: {fileID: 4176280489786542292}
   Attack: {fileID: 443934490540619492}
   Aim: {fileID: 6996923806737725582}
+  Dash: {fileID: 2300759167716161608}
   Animator: {fileID: 4176280489786542297}
   DeathFx: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
 --- !u!114 &442359256177404318

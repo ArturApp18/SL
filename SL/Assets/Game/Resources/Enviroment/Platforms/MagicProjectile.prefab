@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 9054018699492532065}
   speed: 6
-  Damage: 0.1
+  Damage: 0.01
   _toHero: {fileID: 5959222330857876120, guid: 7568c5148952d61488ef49c3c099124b, type: 3}
 --- !u!1001 &1471019592858764234
 PrefabInstance:

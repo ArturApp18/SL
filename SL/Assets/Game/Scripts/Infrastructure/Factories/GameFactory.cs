@@ -72,6 +72,7 @@ namespace Game.Scripts.Infrastructure.Factories
 			_heroGameObject.GetComponent<HeroFlip>().Construct(_inputService);
 			
 			_heroGameObject.GetComponent<WallSlide>().Construct(_inputService);
+			_heroGameObject.GetComponent<HeroDeath>().Construct(_stateMachine);
 			
 			return _heroGameObject;
 		}
@@ -152,7 +153,7 @@ namespace Game.Scripts.Infrastructure.Factories
 		public async Task CreateLevelTransfer(Vector2 at, string levelKey)
 		{
 			GameObject levelTransfer = await InstantiatedRegisteredAsync(AssetAddress.LevelTransferPath, at);
-			var transfer = levelTransfer.GetComponent<LevelTransfer>();
+			LevelTransfer transfer = levelTransfer.GetComponent<LevelTransfer>();
 			transfer.TransferTo = levelKey;
 			transfer.Construct(_stateMachine);
 		}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4486813532280306893}
   - component: {fileID: 28311953697891310}
   - component: {fileID: 4249833071471706784}
+  - component: {fileID: 5384738507039943314}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -210,9 +211,6 @@ MonoBehaviour:
   Animator: {fileID: 6788562739076196154}
   _current: 4
   _max: 4
-  _rigidbody2D: {fileID: 877672779}
-  knockBackForceUp: 0
-  knockBackForce: 0
 --- !u!114 &28311953697891310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +244,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isFacingRight: 0
   _entered: 0
+--- !u!114 &5384738507039943314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166578335002431531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2cac72104a4ee38f94bd725fba0bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 877672779}
+  knockBackForceUp: 2
+  knockBackForce: 1
 --- !u!1 &2485223213796826573
 GameObject:
   m_ObjectHideFlags: 0

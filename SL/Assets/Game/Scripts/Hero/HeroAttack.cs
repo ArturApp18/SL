@@ -53,7 +53,7 @@ namespace Game.Scripts.Hero
 			for (int i = 0; i < Hit(); i++)
 			{
 				_hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Stats.Damage);
-				_hits[i].transform.parent.GetComponent<IHealth>().KnockBack(transform);
+				_hits[i].transform.parent.GetComponent<KnockBackEffect>().KnockBack(transform);
 			}
 		}
 

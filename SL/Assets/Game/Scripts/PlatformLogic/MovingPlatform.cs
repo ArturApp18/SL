@@ -6,7 +6,6 @@ namespace Game.Scripts.PlatformLogic
 	{
 		[SerializeField] private AnimationCurve _yAnimation;
 		[SerializeField] private AnimationCurve _xAnimation;
-		[SerializeField] private Rigidbody2D _rigidBody;
 
 		[SerializeField] private float _duration = 1;
 		[SerializeField] private float _wieght = 5;
