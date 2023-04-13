@@ -5826,6 +5826,7 @@ GameObject:
   - component: {fileID: 4891591300642389484}
   - component: {fileID: 2300759167716161608}
   - component: {fileID: 2983196437209415563}
+  - component: {fileID: -992924386212185263}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -6044,9 +6045,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 4176280489786542297}
-  _rigidbody2D: {fileID: 0}
-  knockBackForceUp: 0
-  knockBackForce: 0
 --- !u!114 &2453648610623176778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6368,6 +6366,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 4176280489786542297}
   IsAttacking: 0
+--- !u!114 &-992924386212185263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176280489786542288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2cac72104a4ee38f94bd725fba0bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 4176280489786542294}
+  knockBackForceUp: 2
+  knockBackForce: 1
 --- !u!1 &4176280490674721858
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,6 @@ MonoBehaviour:
   - Id: Vanya_27d7100e-1bcc-47a8-8ad9-c29e7daf9e9a
     MonsterTypeId: 20
     Position: {x: 17.83, y: 22.22, z: 0.008027896}
-  InitialHeroPosition: {x: 12.2, y: 23.1}
+  InitialHeroPosition: {x: -174.9, y: 15.9}
   SaveTriggers: {x: -16.810165, y: 33.92911}
-  LevelTransfers: {x: 12.698717, y: 9.910514}
+  LevelTransfers: {x: 16.1, y: 9}

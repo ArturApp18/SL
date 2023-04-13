@@ -62,11 +62,7 @@ namespace Game.Scripts.Hero
 
 		private int Hit() =>
 			Physics2D.OverlapCircleNonAlloc(StartPoint(), Stats.DamageRadius, _hits, _layerMask);
-
-		private void ChooseSide()
-		{
-			
-		}
+		
 
 		private Vector2 StartPoint() =>
 			new Vector2(AttackPoint.position.x, AttackPoint.position.y);
