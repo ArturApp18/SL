@@ -1,4 +1,3 @@
-using Game.Scripts.Infrastructure.Services;
 using Game.Scripts.Services.Input;
 using UnityEngine;
 
@@ -77,8 +76,6 @@ namespace Game.Scripts.Hero
 				if (_input.IsJumpButtonUp() && Rigidbody.velocity.y > 0)
 				{
 					Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, Rigidbody.velocity.y * _cutJumpHeight);
-					Debug.Log("yo");
-
 				}
 
 				if (_jumpPressedRemember > 0 && _groundedRemember > 0)
@@ -94,13 +91,14 @@ namespace Game.Scripts.Hero
 					_heroMove.CanMove = true;
 					Jump(DoubleJumpForce * transform.up);
 					_isDoubleJumping = false;
+					Debug.Log("yo");
 				}
 			}
 		}
 
 		private void Jump(Vector2 force)
 		{
-			Rigidbody.AddForce(force, ForceMode2D.Impulse);
+			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, force.y);
 			_currentJumps--;
 		}
 		

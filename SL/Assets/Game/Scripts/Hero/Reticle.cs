@@ -6,17 +6,12 @@ namespace Game.Scripts.Hero
 {
 	public class Reticle : MonoBehaviour
 	{
-		[SerializeField] private AnimationCurve _animationCurve;
 		[SerializeField] private float _selectAnimTime;
-		[SerializeField] private float _deselectAnim;
 		[SerializeField] private float _amplitude;
-		[SerializeField] private float _clamp;
 		[SerializeField] private List<GameObject> points = new List<GameObject>();
 		[SerializeField] private SlideTouch _touch;
 
 		private List<Vector3> pointStartPos = new List<Vector3>();
-
-		private GameObject _selectedObject;
 
 		private void Awake()
 		{
@@ -30,7 +25,6 @@ namespace Game.Scripts.Hero
 		{
 			gameObject.SetActive(true);
 			transform.position = selected.transform.position;
-			_selectedObject = selected;
 
 			Vector3 touchPos = _touch.GetFirstTouch().position;
 			Vector3 touchWorldPos = Camera.main.ScreenToWorldPoint(touchPos);
@@ -69,7 +63,6 @@ namespace Game.Scripts.Hero
 
 		public void Deselect()
 		{
-			_selectedObject = null;
 			gameObject.SetActive(false);
 		}
 	}

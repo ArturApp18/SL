@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game.Scripts.Enemy;
 using Game.Scripts.Logic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.PlatformLogic
@@ -11,15 +12,26 @@ namespace Game.Scripts.PlatformLogic
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private float _damage;
         [SerializeField] private float maxDuration;
+        [SerializeField] private float _lasthitTme;
 
-        private bool _entered;
+        public bool _entered;
 
         public float Timer;
+        public bool _hitted;
 
         private void Start()
         {
             _triggerObserver.TriggerEnter += TriggerEnter;
+            _triggerObserver.TriggerExit += TriggerExit;
             _triggerObserver.TriggerStay += TriggerStay;
+            _lasthitTme = maxDuration + 1;
+        }
+
+        private void OnDisable()
+        {
+            _triggerObserver.TriggerEnter -= TriggerEnter;
+            _triggerObserver.TriggerExit -= TriggerExit;
+            _triggerObserver.TriggerStay -= TriggerStay;
         }
 
         private void Update()
@@ -28,18 +40,24 @@ namespace Game.Scripts.PlatformLogic
             {
                 Timer += Time.deltaTime;
             }
-        }
-
-        private void OnDisable()
-        {
-            _triggerObserver.TriggerEnter -= TriggerEnter;
-            _triggerObserver.TriggerStay -= TriggerStay;
+            _lasthitTme += Time.deltaTime;
         }
 
         private void TriggerEnter(Collider2D obj)
         {
-            obj.GetComponent<IHealth>().TakeDamage(_damage);
-            _entered = true;
+            if (!_entered && _lasthitTme > maxDuration)
+            {
+                obj.GetComponent<IHealth>().TakeDamage(_damage);
+                _entered = true;
+                _hitted = true;
+                _lasthitTme = 0;
+            }
+        }
+
+
+        private void TriggerExit(Collider2D obj)
+        {
+            _entered = false;
         }
 
         private void TriggerStay(Collider2D obj)
@@ -48,6 +66,7 @@ namespace Game.Scripts.PlatformLogic
             {
                 obj.GetComponent<IHealth>().TakeDamage(_damage);
                 Timer = 0;
+                _lasthitTme = 0;
             }
         }
 

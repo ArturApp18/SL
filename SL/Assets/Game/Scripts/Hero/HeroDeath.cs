@@ -1,13 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using Game.Scripts.Infrastructure.States;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game.Scripts.Hero
 {
 	[RequireComponent(typeof(HeroHealth))]
 	public class HeroDeath : MonoBehaviour
 	{
+		[SerializeField] private float coolDownAfterDeath = 3;
+		
 		public HeroHealth Health;
-
 		public HeroMove Move;
 		public HeroAttack Attack;
 		public HeroAim Aim;
@@ -52,6 +56,7 @@ namespace Game.Scripts.Hero
 			Animator.PlayDeath();
 			Instantiate(DeathFx, transform.position, Quaternion.identity);
 		}
+
 
 	}
 }

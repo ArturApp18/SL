@@ -32,4 +32,4 @@ MonoBehaviour:
     Position: {x: 17.83, y: 22.22, z: 0.008027896}
   InitialHeroPosition: {x: -174.9, y: 15.9}
   SaveTriggers: {x: -16.810165, y: 33.92911}
-  LevelTransfers: {x: 16.1, y: 9}
+  LevelTransfers: {x: -165.4, y: 8.7}

@@ -7245,7 +7245,7 @@ GameObject:
   - component: {fileID: 53228133182565456}
   - component: {fileID: 1484325254686028424}
   - component: {fileID: 4899918436433798324}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: 'LedgeCheck '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

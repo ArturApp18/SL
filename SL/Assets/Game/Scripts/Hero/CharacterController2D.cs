@@ -11,28 +11,26 @@ namespace Game.Scripts.Hero
 	{
 
 		[Range(0, 1)] [SerializeField]
-		private float m_CrouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
+		private float m_CrouchSpeed = .36f; 
 
-		[SerializeField] private bool m_AirControl = false; // Whether or not a player can steer while jumping;
+		[SerializeField] private bool m_AirControl = false; 
 
-		[SerializeField] private LayerMask m_WhatIsGround; // A mask determining what is ground to the character
-		[SerializeField] private LayerMask m_WhatIsWall; // A mask determining what is ground to the character
-		[SerializeField] private Transform m_GroundCheck; // A position marking where to check if the player is grounded.
-		[SerializeField] private Transform m_WallCheckUp; // A position marking where to check if the player is grounded.
-		[SerializeField] private Transform m_CeilingCheck; // A position marking where to check for ceilings
-
+		[SerializeField] private LayerMask m_WhatIsGround; 
+		[SerializeField] private LayerMask m_WhatIsWall; 
+		[SerializeField] private Transform m_GroundCheck; 
+		[SerializeField] private Transform m_WallCheckUp; 
+		[SerializeField] private Transform m_CeilingCheck;
 		[SerializeField] private Collider2D m_CrouchDisableCollider;
+		[SerializeField] private Rigidbody2D rigidbody2D;
 
 
-
-		public float k_GroundedRadius = 0.2f; // Radius of the overlap circle to determine if grounded
-		public float k_WallCheckRayDistance = 0.2f; // Radius of the overlap circle to determine if grounded
-		public bool m_Grounded; // Whether or not the player is grounded.
-		public float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+		public float k_GroundedRadius = 0.2f;
+		public float k_WallCheckRayDistance = 0.2f;
+		public bool m_Grounded;
+		public float k_CeilingRadius = .2f;
 
 		private bool m_wasCrouching = false;
 
-		[SerializeField] private Rigidbody2D rigidbody2D;
 
 		public Transform MGroundCheck
 		{
