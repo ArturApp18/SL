@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ground
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -45
+  - m_Start: -46
     m_End: 45
     m_Order: 0
     m_Sprites:
@@ -22,7 +22,7 @@ MonoBehaviour:
     m_End: 128
     m_Order: 0
     m_Sprites: []
-  - m_Start: 129
+  - m_Start: 128
     m_End: 223
     m_Order: 0
     m_Sprites: []

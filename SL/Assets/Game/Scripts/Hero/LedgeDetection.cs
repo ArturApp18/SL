@@ -24,7 +24,7 @@ namespace Game.Scripts.Hero
 		{
 			if (_canDetected)
 			{
-				_characterLedgeClimb._ledgeDetected = Physics2D.OverlapCircle(transform.position, radius, _character.MWhatIsWall);
+				_characterLedgeClimb._ledgeDetected = Physics2D.OverlapCircle(transform.position, radius, _character.MWhatIsLedge);
 				_characterLedgeClimb._upperLedgeDetected = Physics2D.Raycast(upperLedgeCheck.position, transform.right, _raycastDistance, _character.MWhatIsWall);
 			}
 		}
@@ -37,18 +37,12 @@ namespace Game.Scripts.Hero
 
 		private void TriggerEnter(Collider2D obj)
 		{
-			if (obj.gameObject.layer == LayerMask.NameToLayer("Wall"))
-			{
-				_canDetected = false;
-			}
+			_canDetected = false;
 		}
 
 		private void TriggerExit(Collider2D obj)
 		{
-			if (obj.gameObject.layer == LayerMask.NameToLayer("Wall"))
-			{
-				_canDetected = true;
-			}
+			_canDetected = true;
 		}
 
 		private void OnDrawGizmos()

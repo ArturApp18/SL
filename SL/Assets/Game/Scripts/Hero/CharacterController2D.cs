@@ -13,12 +13,13 @@ namespace Game.Scripts.Hero
 		[Range(0, 1)] [SerializeField]
 		private float m_CrouchSpeed = .36f; 
 
-		[SerializeField] private bool m_AirControl = false; 
+		[SerializeField] private bool m_AirControl = false;
 
-		[SerializeField] private LayerMask m_WhatIsGround; 
-		[SerializeField] private LayerMask m_WhatIsWall; 
-		[SerializeField] private Transform m_GroundCheck; 
-		[SerializeField] private Transform m_WallCheckUp; 
+		[SerializeField] private LayerMask m_WhatIsLedge;
+		[SerializeField] private LayerMask m_WhatIsGround;
+		[SerializeField] private LayerMask m_WhatIsWall;
+		[SerializeField] private Transform m_GroundCheck;
+		[SerializeField] private Transform m_WallCheckUp;
 		[SerializeField] private Transform m_CeilingCheck;
 		[SerializeField] private Collider2D m_CrouchDisableCollider;
 		[SerializeField] private Rigidbody2D rigidbody2D;
@@ -63,6 +64,17 @@ namespace Game.Scripts.Hero
 			set
 			{
 				m_WhatIsWall = value;
+			}
+		}
+		public LayerMask MWhatIsLedge
+		{
+			get
+			{
+				return m_WhatIsLedge;
+			}
+			set
+			{
+				m_WhatIsLedge = value;
 			}
 		}
 		[Header("Events")] [Space] public UnityEvent OnLandEvent;

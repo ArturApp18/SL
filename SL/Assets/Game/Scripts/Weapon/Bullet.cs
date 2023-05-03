@@ -7,7 +7,6 @@ namespace Game.Scripts.Weapon
 {
 	public class Bullet : MonoBehaviour
 	{
-		private const string Mob = "Mob";
 
 		[SerializeField] private Rigidbody2D _rigidbody2D;
 		[SerializeField] private TriggerObserver _triggerObserver;

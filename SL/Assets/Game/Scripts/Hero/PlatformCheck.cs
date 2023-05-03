@@ -9,14 +9,11 @@ namespace Game.Scripts.Hero
 	public class PlatformCheck : MonoBehaviour
 	{
 		[SerializeField] private TriggerObserver PlayerTransform;
-		[SerializeField] private Transform platformBody;
 		[SerializeField] private Transform _rigidBody;
-		public bool _isOnPlatform;
-		private IInputService _input;
 
 		private void Awake()
 		{
-			_input = AllServices.Container.Single<IInputService>();
+			AllServices.Container.Single<IInputService>();
 		}
 
 		private void Start()
@@ -44,13 +41,11 @@ namespace Game.Scripts.Hero
 		private void TriggerEnter(Collider2D obj)
 		{
 			_rigidBody.parent = obj.gameObject.transform;
-			_isOnPlatform = true;
 		}
 
 		private void TriggerExit(Collider2D obj)
 		{
 			_rigidBody.parent = null;
-			_isOnPlatform = false;
 		}
 	}
 

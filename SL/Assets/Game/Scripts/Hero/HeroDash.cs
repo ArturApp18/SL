@@ -32,30 +32,33 @@ namespace Game.Scripts.Hero
 
 		private void Update()
 		{
-			if (Input.GetButtonDown("Dash") && CanDash || _slideTouch.Slide && CanDash)
+			if (CanDash && !_isDashing)
 			{
-				_isDashing = true;
-				CanDash = false;
-				_trail.emitting = true;
-				_dashingDirection = new Vector2(_slideTouch.SlideDirection, 0);
-				if (_dashingDirection == Vector2.zero)
+			
+				if (Input.GetButtonDown("Dash") || _slideTouch.DashInput())
 				{
-					if (_heroFlip.IsFacingRight)
+					CanDash = false;
+					_isDashing = true;
+					_trail.emitting = true;
+					_dashingDirection = new Vector2(_slideTouch.SlideDirection, 0);
+					if (_dashingDirection == Vector2.zero)
 					{
-						_dashingDirection = Vector2.right;
+						if (_heroFlip.IsFacingRight)
+						{
+							_dashingDirection = Vector2.right;
+						}
+						else
+						{
+							_dashingDirection = Vector2.left;
+						}
 					}
-					else
-					{
-						_dashingDirection = Vector2.left;
-					}
-					
-				}
 
-				StartCoroutine(StopDashing());
+					StartCoroutine(StopDashing());
+				}
 			}
 
 			_animator.IsDashing(_isDashing);
-			
+
 			if (_isDashing)
 			{
 				_heroMove.CanMove = false;
@@ -66,13 +69,12 @@ namespace Game.Scripts.Hero
 		private IEnumerator StopDashing()
 		{
 			yield return new WaitForSeconds(_dashingTime);
-			_rigidbody.velocity = Vector2.zero;
 			_isDashing = false;
+			_rigidbody.velocity = Vector2.zero;
 			_heroMove.CanMove = true;
 			_trail.emitting = false;
 			yield return new WaitForSeconds(_dashDelay);
 			CanDash = true;
-			
 		}
 	}
 }

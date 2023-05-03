@@ -24,6 +24,30 @@ namespace Game.Scripts.Hero
 
 		public bool Slide;
 		public int SlideDirection;
+		[SerializeField]
+		private bool _dashSwipe;
+		public Vector2 StartTouchPosition
+		{
+			get
+			{
+				return _startTouchPosition;
+			}
+			set
+			{
+				_startTouchPosition = value;
+			}
+		}
+		public Vector2 CurrentTouchPosition
+		{
+			get
+			{
+				return _currentTouchPosition;
+			}
+			set
+			{
+				_currentTouchPosition = value;
+			}
+		}
 
 		private void Awake()
 		{
@@ -37,20 +61,21 @@ namespace Game.Scripts.Hero
 
 		private void Swipe()
 		{
+			
 			if (_inputService.Axis == Vector2.zero && _inputService.AimAxis == Vector2.zero)
 			{
 				if (Input.touchCount > 0 && GetFirstTouch().phase == TouchPhase.Began)
 				{
-					_startTouchPosition = Input.GetTouch(0).position;
-					_trail.transform.position = _startTouchPosition;
+					StartTouchPosition = Input.GetTouch(0).position;
+					_trail.transform.position = StartTouchPosition;
 					_trail.SetActive(true);
 				}
 				
 				if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 				{
-					_currentTouchPosition = Input.GetTouch(0).position;
-					_trail.transform.position = _currentTouchPosition;
-					Vector2 distance = _currentTouchPosition - _startTouchPosition;
+					CurrentTouchPosition = Input.GetTouch(0).position;
+					_trail.transform.position = CurrentTouchPosition;
+					Vector2 distance = CurrentTouchPosition - StartTouchPosition;
 
 					testDistance1 = distance;
 					if (!_stopTouch)
@@ -78,7 +103,7 @@ namespace Game.Scripts.Hero
 
 					_endTouchPosition = Input.GetTouch(0).position;
 
-					Vector2 distance = _endTouchPosition - _startTouchPosition;
+					Vector2 distance = _endTouchPosition - StartTouchPosition;
 					testDistance2 = distance;
 					if (MathF.Abs(distance.x) < _tapRange && Mathf.Abs(distance.y) < _tapRange)
 					{
@@ -93,13 +118,13 @@ namespace Game.Scripts.Hero
 			{
 				if (Input.touchCount > 1 && Input.GetTouch(1).phase == TouchPhase.Began)
 				{
-					_startTouchPosition = Input.GetTouch(1).position;
+					StartTouchPosition = Input.GetTouch(1).position;
 				}
 
 				if (Input.touchCount > 1 && Input.GetTouch(1).phase == TouchPhase.Moved)
 				{
-					_currentTouchPosition = Input.GetTouch(1).position;
-					Vector2 distance = _currentTouchPosition - _startTouchPosition;
+					CurrentTouchPosition = Input.GetTouch(1).position;
+					Vector2 distance = CurrentTouchPosition - StartTouchPosition;
 
 					testDistance1 = distance;
 					if (!_stopTouch)
@@ -109,14 +134,12 @@ namespace Game.Scripts.Hero
 							Slide = true;
 							SlideDirection = -1;
 							_stopTouch = true;
-							Debug.Log("LEft");
 						}
 						else if (distance.x > _swipeRange)
 						{
 							Slide = true;
 							SlideDirection = 1;
 							_stopTouch = true;
-							Debug.Log("Right");
 						}
 					}
 				}
@@ -127,7 +150,7 @@ namespace Game.Scripts.Hero
 
 					_endTouchPosition = Input.GetTouch(1).position;
 
-					Vector2 distance = _endTouchPosition - _startTouchPosition;
+					Vector2 distance = _endTouchPosition - StartTouchPosition;
 					testDistance2 = distance;
 					if (MathF.Abs(distance.x) < _tapRange && Mathf.Abs(distance.y) < _tapRange)
 					{
@@ -139,6 +162,20 @@ namespace Game.Scripts.Hero
 			}
 		}
 
+		public bool DashInput()
+		{
+			if (Slide)
+			{
+				_dashSwipe = true;
+				Slide = false;
+			}
+			else
+			{
+				_dashSwipe = false;
+			}
+
+			return _dashSwipe;
+		}
 		public Touch GetFirstTouch() =>
 			Input.GetTouch(0);
 	}

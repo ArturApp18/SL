@@ -15,5 +15,6 @@ namespace Game.Scripts.Services.Input
         bool IsJumpButtonDown();
         bool IsJumpButton();
         bool IsJumpButtonUp();
+        
     }
 }

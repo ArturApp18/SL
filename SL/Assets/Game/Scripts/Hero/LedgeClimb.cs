@@ -5,9 +5,9 @@ namespace Game.Scripts.Hero
 {
 	public class LedgeClimb : MonoBehaviour
 	{
-		[SerializeField] private Vector2 _offset1; // A collider that will be disabled when crouching
+		[SerializeField] private Vector2 _offset1; 
 		[SerializeField] private Vector2 _offset2;
-		[SerializeField] private Vector2 _climbBegunPositiion; // A collider that will be disabled when crouching
+		[SerializeField] private Vector2 _climbBegunPositiion; 
 		[SerializeField] private Vector2 _climbOverPosition;
 		[SerializeField] private Transform _ledgeCheck;
 		[SerializeField] private Transform _heroTransform;
@@ -47,7 +47,7 @@ namespace Game.Scripts.Hero
 
 		private void CheckForLedge()
 		{
-			if (_ledgeDetected && CanGrabLedge && _wallDetection && !_upperLedgeDetected)
+			if (_ledgeDetected && CanGrabLedge && !_upperLedgeDetected)
 			{
 				CanGrabLedge = false;
 

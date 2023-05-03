@@ -4986,6 +4986,42 @@ Transform:
   m_Father: {fileID: 4176280489786542290}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &847407167628666813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 894202939079966620}
+  m_Layer: 0
+  m_Name: SwipeArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &894202939079966620
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847407167628666813}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6911447, y: 0.6911447, z: 0.6911447}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4176280489786542290}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0465, y: 0.0416}
+  m_SizeDelta: {x: 5.1366, y: 2.7681}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1169959262307254288
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,9 +5336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 7919699951259918515}
-  platformBody: {fileID: 0}
   _rigidBody: {fileID: 4176280489786542290}
-  _isOnPlatform: 0
 --- !u!1 &2969156710575851116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5864,6 +5898,7 @@ Transform:
   - {fileID: 2790001158282149253}
   - {fileID: 4714314532152596473}
   - {fileID: 3243974267288625626}
+  - {fileID: 894202939079966620}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5921,8 +5956,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010000005, y: 0.11250737}
-  m_Size: {x: 0.36582544, y: 0.84103495}
+  m_Offset: {x: 0.024329219, y: 0.11250737}
+  m_Size: {x: 0.2899648, y: 0.84103495}
   m_Direction: 0
 --- !u!70 &4870499872166243686
 CapsuleCollider2D:
@@ -5933,7 +5968,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 4176280489786542288}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4b0bca6469995b04fbd488aba4d1a3bc, type: 2}
+  m_Material: {fileID: 6200000, guid: 5e06b1c828bcca64982ce7ed82336cc1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5954,6 +5989,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CrouchSpeed: 0.36
   m_AirControl: 0
+  m_WhatIsLedge:
+    serializedVersion: 2
+    m_Bits: 262272
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 262208
@@ -5964,11 +6002,11 @@ MonoBehaviour:
   m_WallCheckUp: {fileID: 3365367202738548155}
   m_CeilingCheck: {fileID: 3765566654705695302}
   m_CrouchDisableCollider: {fileID: 4176280489786542295}
+  rigidbody2D: {fileID: 4176280489786542294}
   k_GroundedRadius: 0.1
   k_WallCheckRayDistance: 0.2
   m_Grounded: 0
   k_CeilingRadius: 0.02
-  rigidbody2D: {fileID: 4176280489786542294}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -6057,6 +6095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9214544265c04e28809a9028cdb24c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolDownAfterDeath: 3
   Health: {fileID: 2870650806199245276}
   Move: {fileID: 4176280489786542292}
   Attack: {fileID: 443934490540619492}
@@ -6089,8 +6128,8 @@ MonoBehaviour:
   _maxJumps: 2
   _currentJumps: 0
   _isDoubleJumping: 0
-  JumpForce: 4
-  DoubleJumpForce: 3.75
+  JumpForce: 4.25
+  DoubleJumpForce: 4.25
 --- !u!114 &6996923806737725582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6112,7 +6151,7 @@ MonoBehaviour:
   _lineRenderer: {fileID: 5893965231034352113}
   heroFlip: {fileID: 1183437046099082747}
   ReturnTime: 0.5
-  AimSpeed: 3
+  AimSpeed: 10
   TresHold: 0.5
 --- !u!114 &1183437046099082747
 MonoBehaviour:
@@ -6144,9 +6183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 6486606055636525509}
-  platformBody: {fileID: 0}
   _rigidBody: {fileID: 4176280489786542290}
-  _isOnPlatform: 0
 --- !u!114 &3614948517280028873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6215,12 +6252,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trail: {fileID: 2969156710575851116}
   _stopTouch: 0
-  _swipeRange: 200
+  _swipeRange: 400
   _tapRange: 0.5
   testDistance1: {x: 0, y: 0}
   testDistance2: {x: 0, y: 0}
   Slide: 0
   SlideDirection: 0
+  _dashSwipe: 0
 --- !u!96 &4891591300642389484
 TrailRenderer:
   serializedVersion: 2
@@ -6348,7 +6386,7 @@ MonoBehaviour:
   _animator: {fileID: 4176280489786542297}
   _dashingVelocity: 12.5
   _dashingTime: 0.15
-  _dashDelay: 1.5
+  _dashDelay: 0.75
   _heroFlip: {fileID: 1183437046099082747}
   _heroMove: {fileID: 4176280489786542292}
   CanDash: 1
@@ -6857,16 +6895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b0a85ef6504e1499b6600d32077bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   _selectAnimTime: 0
-  _deselectAnim: 0
   _amplitude: 0
-  _clamp: 0
   points:
   - {fileID: 5808286982069772352}
   - {fileID: 4194996226042357185}
@@ -7244,8 +7274,7 @@ GameObject:
   - component: {fileID: 5387575031489316322}
   - component: {fileID: 53228133182565456}
   - component: {fileID: 1484325254686028424}
-  - component: {fileID: 4899918436433798324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'LedgeCheck '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7299,7 +7328,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019003391, y: 0.042548656}
+  m_Offset: {x: 0.019003391, y: 0.082731634}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7310,7 +7339,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19689083, y: 0.08535004}
+  m_Size: {x: 0.19689083, y: 0.0050840974}
   m_EdgeRadius: 0
 --- !u!114 &1484325254686028424
 MonoBehaviour:
@@ -7324,27 +7353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f94f41fa27472c922cbfa92a4f30bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &4899918436433798324
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7958224362077983089}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!1 &8064998334561352459
 GameObject:
   m_ObjectHideFlags: 0
@@ -9313,7 +9321,7 @@ MonoBehaviour:
   _impactVFX: {fileID: 725748389856807712, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
   _reload: {fileID: 8553024378442766294}
   _bulletsPerSecond: 10
-  _speed: 7
+  _speed: 14
   releasedBullet: 0
   _shootSoundFX: {fileID: 1013161872991400548}
 --- !u!4 &7961032990619218824 stripped
