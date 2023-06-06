@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42614ae583d4adf837683e7fc844355, type: 3}
+  m_Name: 1st Level
+  m_EditorClassIdentifier: 
+  LevelKey: 1st Level
+  LevelTransferKey: Vanya
+  EnemySpawners:
+  - Id: 1st Level_ef24a2e0-17de-47ef-9e2a-555cf1522383
+    MonsterTypeId: 0
+    Position: {x: -0.1, y: 18.92, z: 0.008027896}
+  - Id: 1st Level_acd90fb4-f220-4087-bd23-41aedacafe7a
+    MonsterTypeId: 0
+    Position: {x: 15.33, y: 12.85, z: 0.008027896}
+  - Id: 1st Level_1f4b20ad-1496-457f-ae99-6eb830df755b
+    MonsterTypeId: 0
+    Position: {x: 33.01, y: 8.2, z: 0.008027896}
+  - Id: 1st Level_39cd2a28-24da-4abb-b3f2-0a3b624be96a
+    MonsterTypeId: 0
+    Position: {x: 137.87, y: 9.11, z: 0.008027896}
+  - Id: 1st Level_d2a89eb4-8baf-4488-ae15-89a364d8f34b
+    MonsterTypeId: 0
+    Position: {x: 119.04, y: 8.16, z: 0.008027896}
+  - Id: 1st Level_ef6d4157-9bdb-49d7-8b20-c2a64433abf9
+    MonsterTypeId: 0
+    Position: {x: 102, y: 2.17, z: 0.008027896}
+  - Id: 1st Level_48b2d7ec-6770-41fe-b628-365f8e02ad90
+    MonsterTypeId: 0
+    Position: {x: 92.67, y: 3.32, z: 0.008027896}
+  - Id: 1st Level_11c08c73-595a-4130-8046-dc13a21775f4
+    MonsterTypeId: 0
+    Position: {x: 95.04, y: 4.66, z: 0.008027896}
+  - Id: 1st Level_a4940694-6560-46e2-afa6-5a32847f454e
+    MonsterTypeId: 0
+    Position: {x: 84.47, y: 3.39, z: 0.008027896}
+  - Id: 1st Level_2b292419-4cc6-4ccb-8bb5-ed3948a70834
+    MonsterTypeId: 0
+    Position: {x: 62.87, y: 3.32, z: 0.008027896}
+  - Id: 1st Level_e6d8456a-7c5e-4130-bde6-a0d6151497e9
+    MonsterTypeId: 0
+    Position: {x: 67.83, y: 10.64, z: 0.008027896}
+  - Id: 1st Level_10c13b4a-b953-487f-833a-ad4922ba015c
+    MonsterTypeId: 0
+    Position: {x: 53.29, y: 12.87, z: 0.008027896}
+  - Id: Main_517b3f58-8b9d-4bcb-98f7-c70a23fd30fe
+    MonsterTypeId: 0
+    Position: {x: 50.79, y: 10.61, z: 0.008027896}
+  InitialHeroPosition: {x: -26.12, y: 11.03}
+  SaveTriggers: {x: -39.3, y: -71.3}
+  LevelTransfers: {x: -126.14, y: -8000}

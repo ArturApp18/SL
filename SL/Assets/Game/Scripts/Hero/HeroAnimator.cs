@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using Game.Scripts.Infrastructure;
 using Game.Scripts.Logic;
 using UnityEngine;
 
@@ -8,6 +6,9 @@ namespace Game.Scripts.Hero
 {
 	public class HeroAnimator : MonoBehaviour, IAnimationStateReader
 	{
+		private const string ComboAttack1 = "Attack1Alazar";
+		private const string ComboAttack2 = "Attack2Alazar";
+		private const string ComboAttack3 = "Attack3Alazar";
 		[SerializeField] private Rigidbody2D _rigidbody;
 		[SerializeField] private Animator _animator;
 
@@ -142,17 +143,17 @@ namespace Game.Scripts.Hero
 
 		public void PlayComboAttack()
 		{
-			_animator.Play("RobotAttack1");
+			_animator.Play(ComboAttack1);
 		}
 
 		public void PlayComboAttack2()
 		{
-			_animator.Play("RobotAttack2");
+			_animator.Play(ComboAttack2);
 		}
 
 		public void PlayComboAttack3()
 		{
-			_animator.Play("RobotAttack3");
+			_animator.Play(ComboAttack3);
 		}
 		public void PlayDeath()
 		{
